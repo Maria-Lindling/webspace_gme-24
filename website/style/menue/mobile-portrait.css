@@ -1,0 +1,98 @@
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*   thin viewport rules    */
+/*       phone format       */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+@media (max-width: 25rem ) {
+  #hauptnav {
+    display: flex ;
+    flex-direction: column ;
+    flex-wrap: initial ;
+    justify-content: flex-start ;
+    align-content: flex-start ;
+    
+/*  box-sizing: border-box ;                                                  */
+    padding-bottom: 0.375em ;
+    min-height: 4em ;
+/*  border: solid 1px #000 ;                                                  */
+    border-radius: 0 0 1em 1em ;
+/*  box-shadow: 0 0.125em 0.25em black ;                                      */
+    
+    transform: translate(0, -1.875em) ;
+    transition: all 0.375s ease ;
+    
+/*  font-family: "VT323", Calibri, Helvetica, sans-serif ;                    */
+/*  font-size: 1.5rem ;                                                       */
+/*  font-weight: bold ;                                                       */
+/*  color: #eee ;                                                             */
+/*  text-align: center ;                                                      */
+    
+    &:hover, &:active {
+      min-height: 6em ;
+  
+      .mobile-exclusive {
+        max-height: 0 ;
+      }
+    
+      > nav-menu {
+        overflow: initial ;
+      
+        max-height: 1.875em ;
+        
+        &:hover, &:active {
+          max-height: 24em ;
+        }
+      }
+    }
+  
+    > div, > nav-menu {
+      margin: auto ;
+    }
+  
+    > nav-menu {
+      overflow: hidden ;
+    
+      max-height: 0 ;
+      
+      transition: max-height 0.375s ease ;
+    }
+    
+    .icon {
+      margin-top: 1em ;
+    
+      font-size: 2em ;
+    }
+    
+/*  nav-menu {                                                                */
+/*    margin-top: 2rem ;                                                      */
+/*  }                                                                         */
+    
+    nav-menu:hover menu-body, nav-menu:active menu-body {
+      overflow: initial ;
+    }
+    
+/*  .desktop-exclusive {                                                      */
+/*    display: none ;                                                         */
+/*                                                                            */
+/*    max-height: 8rem ;                                                      */
+/*                                                                            */
+/*    overflow: hidden ;                                                      */
+/*                                                                            */
+/*    transition: max-height 0.375s ease ;                                    */
+/*  }                                                                         */
+  
+    .mobile-exclusive {
+      display: block ;
+      
+/*    max-height: 8rem ;                                                      */
+/*                                                                            */
+/*    overflow: hidden ;                                                      */
+/*                                                                            */
+/*    transition: max-height 0.375s ease ;                                    */
+    }
+  }
+}

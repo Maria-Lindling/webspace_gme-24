@@ -7,7 +7,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Adaptive Menüleiste</title>
 		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
-		<link rel="stylesheet" href="../style/menue.css" />
+		<link rel="stylesheet" href="../style/menue/initial.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/desktop-landscape.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/mobile-landscape.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/mobile-portrait.css" />
+		<link rel="stylesheet" media="print"  href="../style/menue/print.css" />
     <!---->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +19,16 @@
     <!---->
 		<style>
 			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+
+      body {
+        height: 100vh ;
+        margin: 0 ;
+        
+        background-image: url('../media/img/Motiv_10.jpg') ;
+        background-size: cover ;
+        background-position: center ;
+        background-repeat: no-repeat ;
+      }
 		</style>
 		<script src="pfad/zu/datei.js"></script>
 		<script>
@@ -23,30 +37,11 @@
 	</head>
 	<body>
     <nav id="hauptnav">
-      <!--
-        Menü wofür?
-        
-        Hier:
-          Ein Menü zu je einer Kategorie von Bildmotiven:
-            Gebäude, Kultur, Landschaft, Pflanzen, Technik, Tiere
-          
-          ca. 3 bis 10 Optionen pro Menü
-        
-                  ________          ________
-        |________|_Kopf___|________|_Kopf___|__________________________|
-                                |  |_Opt 1__|        |_Fuss___|
-                                |  |_Opt 2__|           |
-                      Drop-down v  |_Opt 3__|           v
-                                    ^Rumpf^            Pull-down
-                                    
-        HTML-Custom-Elements:
-          Von Entwickler erdachte, eigene HTML-Elemente, kenntlich durch einen Bindestrich im Tag
-          - Names of custom elements MUST contain  a dash (Bindestrich)
-          - Each tag can only be registered once.
-          - Custom Elements MUST be closed with a closing tag.
-      -->
-      <div class="icon html5icon">
+      <div class="icon html5icon desktop-exclusive">
         &#xf4e3;
+      </div>
+      <div class="icon mobile-exclusive">
+        &#xf394;
       </div>
       <nav-menu>
         <menu-head>
