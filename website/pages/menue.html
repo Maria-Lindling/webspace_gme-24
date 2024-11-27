@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adaptive Menüleiste</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="../style/menue.css" />
+    <!---->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!---->
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+		</script>
+	</head>
+	<body>
+    <nav id="hauptnav">
+      <!--
+        Menü wofür?
+        
+        Hier:
+          Ein Menü zu je einer Kategorie von Bildmotiven:
+            Gebäude, Kultur, Landschaft, Pflanzen, Technik, Tiere
+          
+          ca. 3 bis 10 Optionen pro Menü
+        
+                  ________          ________
+        |________|_Kopf___|________|_Kopf___|__________________________|
+                                |  |_Opt 1__|        |_Fuss___|
+                                |  |_Opt 2__|           |
+                      Drop-down v  |_Opt 3__|           v
+                                    ^Rumpf^            Pull-down
+                                    
+        HTML-Custom-Elements:
+          Von Entwickler erdachte, eigene HTML-Elemente, kenntlich durch einen Bindestrich im Tag
+          - Names of custom elements MUST contain  a dash (Bindestrich)
+          - Each tag can only be registered once.
+          - Custom Elements MUST be closed with a closing tag.
+      -->
+      <div class="icon html5icon">
+        &#xf4e3;
+      </div>
+      <nav-menu>
+        <menu-head>
+          Menükopf 🅰️
+        </menu-head>
+        <menu-body>
+          <a href="#">Option A1</a>
+          <a href="#">Option A2</a>
+          <a href="#">Option A3</a>
+          <a href="#">Option A4</a>
+          <a href="#">Option A5</a>
+        </menu-body>
+      </nav-menu>
+      <nav-menu>
+        <menu-head>
+          Menükopf 🍔
+        </menu-head>
+        <menu-body>
+          <a href="#">Option B1</a>
+          <a href="#">Option B2</a>
+          <a href="#">Option B3</a>
+          <a href="#">B4</a>
+          <a href="#">Option B5</a>
+          <a href="#">Option B6</a>
+          <a href="#">Option B7</a>
+          <a href="#">Option B8</a>
+        </menu-body>
+      </nav-menu>
+      <nav-menu>
+        <menu-head>
+          Menükopf 🦀
+        </menu-head>
+        <menu-body>
+          <a href="#">Option C1</a>
+          <a href="#">Laaange Option C2</a>
+        </menu-body>
+      </nav-menu>
+    </nav>
+	</body>
+</html>

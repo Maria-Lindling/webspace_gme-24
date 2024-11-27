@@ -1,0 +1,506 @@
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*       ID-Bezogene        */
+/*     Formattierungen      */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+/* N/A */
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*      Übergreifende       */
+/*     Formattierungen      */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*           Body           */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+body {
+  
+  /* Macht alle beinhalteten Elemente "Grid-Items". */
+  display: grid ;
+
+  /* Gibt die Anzahl und dimensionen der Raster-Felder */
+  grid-template-columns: 13rem auto 18rem; ;
+  grid-template-rows: 4rem auto auto 3rem  ;
+
+  /* Benennt Abschnitte des Rasters und bestimmt deren dimensionen. */
+  grid-template-areas:
+    "nav_area    header        header"
+    "nav_area    main_content  mini_wiki"
+    "nav_area    main_content  body_spacer"
+    "footer      footer        footer"
+  ;
+  
+  /* Zwischenabstand der Rasterelemente. */
+  gap: 0.125rem ;
+  
+  /* Box Model */
+  /* border: solid 0.025rem #f3f ; */
+  
+  /* Typography */
+  font-family: Calibri, Helvetics, sans-serif ;
+}
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*          Header          */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+body > header {
+  /* Position and Layout */
+  grid-area: header;
+	
+  /* Box Model */
+  /* border: solid 0.125rem #fcc ; */
+
+  /* Background */
+  background-color: #fff ;
+
+	& > h1 {
+    /* Typography */
+	  font-size: 2rem ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*          Aside           */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+aside {
+  /* Position and Layout */
+  grid-area: mini_wiki ;
+  position: sticky ;
+  top: 0 ;
+  
+  /* Display and Visibility */
+  display: grid ;
+  grid-template-columns: auto ;
+  grid-template-rows: 4rem 4rem auto ;
+  grid-template-areas:
+    "aside_header"
+    "internal_links"
+    "info_table"
+  ;
+  gap: 0.125rem ;
+  
+
+  /* Box Model */
+  border: solid 0.125rem #000 ;
+  
+  /* Background */
+  background-color: white ;
+
+  & header {
+    /* Position and Layout */
+    grid-area: aside_header ;
+
+    /* Box Model */
+    width: 100% ;
+
+    /* Typography */
+    text-align: center ;
+  }
+  
+  & > div {
+    & :first-of-type {
+      /* Position and Layout */
+      grid-area: internal_links ;
+    }
+  }
+  
+  & list {
+    /* Element Specific */
+    list-style: none ;
+  }
+       
+  & div > list > li {
+    
+    /* Box Model */
+    margin-left: 2em ;
+  }
+}
+
+table.infobox {
+  /* Position and Layout */
+  grid-area: info_table ;
+
+  /* Box Model */
+  margin: 0 ;
+
+  /* Typography */
+  /* color: #f0f ; */
+
+  & tbody {
+    /* margin: 0.125em 0.125em ; */
+
+    & tr {
+      /* border-bottom: 1pt solid #f0f ; */
+
+      & td {
+        padding: 0 ;
+        
+        vertical-align: text-top ;
+      }
+    }
+
+    & > :nth-child(2n+1) {
+      background-color: #eee ;
+    }
+  }
+  .portrait {
+    background-color: transparent !important ;
+
+    & img {
+      display: block ;
+
+      margin: auto ;
+    }
+  }
+  
+  & .bg-infobox {
+    
+    & td {
+      height 1.75em ;
+    }
+    
+    & h3 {
+      margin: 0.125em 0.125em ;
+      text-align: center ;
+    }
+  }
+  
+  & .struck {
+    text-decoration: line-through ;
+    color: #777 ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*          Footer          */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+footer {
+  /* Position and Layout */
+  grid-area: footer;
+  
+  /* Display and Visibility */
+  display: grid ;
+  grid-template-columns: 3fr 4fr 4fr 3fr ;
+  grid-template-rows: 4rem ;
+  grid-template-areas:
+    "extra_info link_hub kontakt impressum"
+  ;
+  gap: 0.125rem ;
+
+  /* Box Model */
+  /* border: solid 0.125rem #fcc ; */
+  border-top: solid 0.125rem #000 ;
+  
+  & > :nth-child(1n) {
+    text-align: center ;
+  }
+  
+  & > :first-child {
+    grid-area: extra_info ;
+  }
+  
+  & > :nth-child(2) {
+    grid-area: link_hub ;
+  }
+  
+  & > :nth-child(3) {
+    grid-area: kontakt ;
+  }
+  
+  & > :nth-child(4) {
+    grid-area: impressum ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*        Navigation        */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+nav {
+  /* Position and Layout */
+  grid-area: nav_area;
+  
+  /* Display and Visibility */
+  display: grid ;
+  grid-template-columns: auto ;
+  grid-template-rows: 4rem auto ;
+  grid-template-areas:
+    "header"
+    "hyperlinks"
+  ;
+  gap: 0.125rem ;
+  
+  /* Box Model */
+  /* border: solid 0.125rem #9f9 ; */
+  border-right: solid 0.125rem #000 ;
+  
+  /* Typography */
+  font-size: 0.8675rem ;
+	
+  & > header {
+    /* Position and Layout */
+    grid-area: header ;
+  }
+  
+  & > div {
+  
+    &:first-of-type {
+      /* Position and Layout */
+      grid-area: hyperlinks ;
+    }
+    
+    & > list {
+      /* Position and Layout */
+      position: sticky ;
+      top: 0 ;
+      
+      /* Box Model */
+      padding-left: 0.5rem ;
+      
+      & > li {
+        /* Display and Visibility */
+        display: block ;
+        
+        /* Box Model */
+        margin: 0.785em 0.785em ;
+        
+        & a {
+        
+          /* Typography */
+          font-weight: 600 ;
+          text-decoration: none ;
+          text-align: center ;
+          color: #000 ;
+          
+          /* Box Model */
+          padding: 0.175em ;
+          border: outset 3px #000 ;
+          border-radius: 0.2em ;
+          margin: 0.175em ;
+          
+          /* Background */
+          background: linear-gradient(
+            to bottom right, #ccc 0%, #fff 33%, #666 100%
+          ) ;
+          
+          &:hover {
+          
+            /* Box Model */
+            border: outset 3px #664 ;
+            
+            /* Background */
+            background: linear-gradient(
+              to bottom right, #dda 0%, #fff 33%, #995 100%
+            ) ;
+          }
+          
+          &:active {
+            /* Display and Visibility */
+            transform: translate( 2px, 2px ) ;
+          
+            /* Box Model */
+            border: inset 3px #664 ;
+            
+            /* Background */
+            background: linear-gradient(
+              to bottom right, #ffa 0%, #fff 33%, #BB5 100%
+            ) ;
+          }
+          
+          &:visited {
+            /* Typography */
+            color: #000 ;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*           Main           */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+main {
+  /* Position and Layout */
+  grid-area: main_content;
+  
+  /* Display and Visibility */
+  display: grid ;
+  grid-template-columns: auto 6rem ;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "header mini_wiki"
+    "internal_links mini_wiki"
+  ;
+  gap: 0.125rem ;
+  
+  /* Box Model */
+  max-width: 54em ;
+  padding: 1rem ;
+  /* border: solid 0.125rem #66f ; */
+  margin: auto ;
+  
+  /* Typography */
+  font-size: 0.8675rem ;
+	
+	& article {
+		& > header {
+      /* Display and Visibility */
+			display: block ;
+		}
+		
+		& > section {
+      /* Box Model */
+			padding-bottom: 0.75rem ;
+			border-top: solid thin #ccc ;
+		}
+		
+		& section {
+			padding-left: 1.25rem ;
+			
+			& > list {
+        /* Display and Visibility */
+				display: block ;
+        
+        /* Box Model */
+        border-top: solid thin #ccc ;
+				margin-left: 1.25rem ;
+        
+        & li.indented-item {
+          /* Element Specific */
+          list-style: none;
+          
+          /* Box Model */
+          margin-left: 1.25em ;
+          
+          /* Typography */
+          color: #444 ;
+        }
+			}
+			
+			& > section {
+        /* Box Model */
+				padding-left: 0.75rem ;
+			}
+		
+			a {
+        /* Typography */
+				text-decoration: none ;
+				
+				&:hover {
+          /* Typography */
+					text-decoration: underline ;
+				}
+			}
+
+			p {
+				>a {
+					&::before {
+            /* Generated Content */
+						content: '»' ;
+					}
+
+					&::after {
+            /* Generated Content */
+						content: '«' ;
+					}
+				}
+			
+				blockquote {
+          /* Box Model */
+					padding: 0.125rem ;
+          
+          /* Background */
+					background-color: #eee ;
+					
+					p {
+            /* Box Model */
+						margin: 0.5em ;
+					}
+				}
+
+				q {
+					&::before {
+            /* Generated Content */
+						content: '«' ;
+					}
+					
+					&::after {
+            /* Generated Content */
+						content: '»' ;
+					}
+				}
+				
+				cite {
+          /* Background */
+					background-color: #ff8 ;
+				}
+
+				span.jahr {
+          /* Typography */
+					font-weight: 600 ;
+				}
+			}
+		}
+	}
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */

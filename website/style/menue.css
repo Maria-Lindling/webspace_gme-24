@@ -1,0 +1,273 @@
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*          Rules           */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+/* preserved rule remnant, not in use */
+@font-face {
+  font-family: 'menueschrift' ;
+  /* src: url('../style/Chalk-Regular.ttf') ; */
+  src: url('../style/VT323-Regular.ttf') ;
+}
+
+@font-face {
+  font-family: 'ionicons' ;
+  src: url('../style/ionicons/ionicons.woff') ;
+}
+
+/*
+@media screen and (min-width: 720px ) and (max-width: 1080px) {
+  #hauptnav {
+    border: solid 2px #f11 !important;
+  }
+}
+*/
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*           TMP            */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+nav-menu, menu-head, menu-body, nav-menu a {
+  display: block ;
+  
+  box-sizing: border-box ;
+  /* border: dotted 2px #777 ; */
+}
+
+#hauptnav, menu-body {
+  background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+}
+
+body {
+  height: 100vh ;
+  margin: 0 ;
+  
+  background-image: url('../media/img/Motiv_34.jpg') ;
+  background-size: cover ;
+  background-position: center ;
+  background-repeat: no-repeat ;
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*       global rules       */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+.icon {
+  font-family: ionicons ;
+  font-size: 1.3em ;
+}
+
+.html5icon {
+  color: #e34c26 ;
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*         hauptnav         */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+
+#hauptnav {  
+  box-sizing: border-box ;
+  border: solid 1px #000 ;
+  border-radius: 1em ;
+  box-shadow: 0 0.125em 0.25em black;
+  
+  font-family: menueschrift, "VT323", Calibri, Helvetica, sans-serif ;
+  font-size: 1.5rem ;
+  font-weight: bold ;
+  color: #eee ;
+  text-align: center ;
+  
+  > div, > nav-menu {
+    margin-top: 2rem ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*    all viewport rules    */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+nav-menu {
+  box-sizing: border-box ;
+  width: 7.375em ;
+
+  &:hover  {
+    menu-head {
+      background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+      transition: max-height 0s ease ;
+    }
+    
+    menu-body {
+      max-height: 24em ;
+    }
+    
+    a {
+      display: block ;
+      
+      &:hover {
+        /* border: 2px solid #dd2 ; */
+      
+        color: #fff ;
+        
+        background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+      }
+    }
+  }
+  
+  a {
+    color: #eee ;
+    text-decoration: none ;
+  }
+  
+  menu-head {
+  }
+  
+  menu-body, a {
+  }
+  
+  menu-body {
+    max-height: 0 ;
+    overflow: hidden ;
+    transition: max-height .375s ease ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*   wide viewport rules    */
+/*      desktop format      */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+@media screen and not (max-width: 50rem ){
+  #hauptnav {
+    display: flex ;
+    flex-direction: row ;
+    flex-wrap: nowrap ;
+    justify-content: space-evenly ;
+    align-content: flex-end ;
+    
+    height: 4rem ;
+    box-shadow: 0 0.125em 0.25em black;
+    
+    transform: translate(0, -2rem) ;
+  }
+}
+
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*  narrow viewport rules   */
+/*      tablet format       */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+@media screen and (min-width: 25.01rem ) and (max-width: 50rem ){
+  #hauptnav {
+    display: flex ;
+    flex-direction: column ;
+    flex-wrap: initial ;
+    justify-content: initial ;
+    align-content: flex-start ;
+    
+    height: 100vh ;
+    width: 7.25em ;
+    transform: translate(-5.125em, 0) ;
+    transition: transform 0.375s ease ;
+    
+    &:hover {
+      transform: translate(0, 0) ;
+    }
+  
+    > div, > nav-menu {
+      margin: 0 ;
+    }
+    
+    .icon {
+      font-size: 2em ;
+    }
+    
+    nav-menu {
+    }
+    
+    nav-menu:hover menu-body {
+      overflow: initial ;
+    }
+  }
+}
+/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*   thin viewport rules    */
+/*       phone format       */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+@media screen and (max-width: 25rem ) {
+  #hauptnav {
+    display: flex ;
+    flex-direction: column-reverse ;
+    flex-wrap: initial ;
+    justify-content: flext-start ;
+    align-content: center ;
+    
+    transform: translate(0, -4em) ;
+    transition: transform 0.375s ease ;
+    
+    &:hover {
+      transform: translate(0, 0) ;
+    }
+  
+    > div, > nav-menu {
+      margin: auto ;
+    }
+    
+    .icon {
+      font-size: 2em ;
+    }
+    
+    nav-menu {
+    }
+    
+    nav-menu:hover menu-body {
+      overflow: initial ;
+    }
+  }
+}

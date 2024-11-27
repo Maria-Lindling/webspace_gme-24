@@ -1,0 +1,62 @@
+
+/* START: Maßangaben für das Raster-Display. */
+
+body {
+  border: solid 0.25em #f3f ;
+  
+  /* Macht alle beinhalteten Elemente "Grid-Items". */
+  display: grid ;
+
+  /* Gibt die Anzahl und dimensionen der Raster-Felder */
+  grid-template-columns: 10em 3fr 1fr ;
+  grid-template-rows: 4em auto 2em ;
+
+  /* Benennt Abschnitte des Rasters und bestimmt deren dimensionen. */
+  grid-template-areas:
+    "header       header           header"
+    "nav_area     main_content     aside"
+    "nav_area     footer           footer"
+  ;
+  
+  /* Zwischenabstand der Rasterelemente. */
+  gap: 1em ;
+}
+
+/* END */
+
+
+/* START: Einordnung der Elemente in das Raster. */
+
+header {
+  grid-area: header;
+}
+
+nav {
+  border: solid 0.125em #9f9 ;
+  grid-area: nav_area;
+}
+
+main {
+  border: solid 0.125em #66f ;
+  grid-area: main_content;
+}
+
+aside {
+  border: solid 0.125em #000 ;
+  grid-area: aside;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* END */
+
+
+/* START: Geteilte Formatierungen */
+
+header, footer {
+  border: solid 0.125em #fcc ;
+}
+
+/* END */
