@@ -1,37 +1,7 @@
 /* #### #### #### #### #### */
 /* #### ####      #### #### */
 /* ####                #### */
-/*          Rules           */
-/* ####                #### */
-/* #### ####      #### #### */
-/* #### #### #### #### #### */
-
-/* preserved rule remnant, not in use */
-@font-face {
-  font-family: 'menueschrift' ;
-  /* src: url('../style/Chalk-Regular.ttf') ; */
-  src: url('../../style/VT323-Regular.ttf') ;
-}
-
-@font-face {
-  font-family: 'ionicons' ;
-  src: url('../../style/ionicons/ionicons.woff') ;
-}
-
-/*
-@media screen and (min-width: 720px ) and (max-width: 1080px) {
-  #hauptnav {
-    border: solid 2px #f11 !important;
-  }
-}
-*/
-
-/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
-
-/* #### #### #### #### #### */
-/* #### ####      #### #### */
-/* ####                #### */
-/*           TMP            */
+/*     Custom Elements      */
 /* ####                #### */
 /* #### ####      #### #### */
 /* #### #### #### #### #### */
@@ -40,33 +10,25 @@ nav-menu, menu-head, menu-body, nav-menu a {
   display: block ;
   
   box-sizing: border-box ;
-  /* border: dotted 2px #777 ; */
-}
-
-#hauptnav, menu-body {
-  background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
 }
 
 /* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
 
-/* #### #### #### #### #### */
-/* #### ####      #### #### */
-/* ####                #### */
-/*       global rules       */
-/* ####                #### */
-/* #### ####      #### #### */
-/* #### #### #### #### #### */
 
-.icon {
-  font-family: ionicons ;
-  font-size: 1.3em ;
-}
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*        coloration        */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
 
 .html5icon {
   color: #e34c26 ;
 }
 
 /* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
+
 
 /* #### #### #### #### #### */
 /* #### ####      #### #### */
@@ -77,9 +39,10 @@ nav-menu, menu-head, menu-body, nav-menu a {
 /* #### #### #### #### #### */
 
 
-#hauptnav {  
+#hauptnav {
+  display: flex ; 
   box-sizing: border-box ;
-  border: solid 1px #000 ;
+  /* border: solid 1px #000 ; */
   border-radius: 1em 1em 1em 1em ;
   box-shadow: 0 0.125em 0.25em black ;
   
@@ -89,8 +52,16 @@ nav-menu, menu-head, menu-body, nav-menu a {
   color: #eee ;
   text-align: center ;
   
+  background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+  
   > div, > nav-menu {
     margin-top: 2rem ;
+  }
+  
+  
+  .icon {
+    font-family: ionicons ;
+    font-size: 1.3em ;
   }
   
   .mobile-exclusive, .desktop-exclusive {
@@ -102,60 +73,46 @@ nav-menu, menu-head, menu-body, nav-menu a {
     
     transition: max-height 0.375s ease ;
   }
-}
+  
+  nav-menu {
+    box-sizing: border-box ;
+    width: 7.375em ;
 
-/* #### #### #### #### #### #### #### #### #### #### #### #### #### #### #### */
-
-/* #### #### #### #### #### */
-/* #### ####      #### #### */
-/* ####                #### */
-/*    all viewport rules    */
-/* ####                #### */
-/* #### ####      #### #### */
-/* #### #### #### #### #### */
-
-nav-menu {
-  box-sizing: border-box ;
-  width: 7.375em ;
-
-  &:hover, &:active  {
-    menu-head {
-      background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
-      transition: max-height 0s ease ;
-    }
-    
-    menu-body {
-      max-height: 24em ;
+    &:hover, &:active  {
+      menu-head {
+        background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+        transition: max-height 0s ease ;
+      }
+      
+      menu-body {
+        max-height: 24em ;
+      }
+      
+      a {
+        display: block ;
+        
+        &:hover, &:active {        
+          color: #fff ;
+          
+          background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+        }
+      }
     }
     
     a {
-      display: block ;
-      
-      &:hover, &:active {
-        /* border: 2px solid #dd2 ; */
-      
-        color: #fff ;
-        
-        background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
-      }
+      color: #eee ;
+      text-decoration: none ;
     }
-  }
-  
-  a {
-    color: #eee ;
-    text-decoration: none ;
-  }
-  
-  menu-head {
-  }
-  
-  menu-body, a {
-  }
-  
-  menu-body {
-    max-height: 0 ;
-    overflow: hidden ;
-    transition: max-height .375s ease ;
+    
+    menu-head {
+    }
+    
+    menu-body {
+      max-height: 0 ;
+      overflow: hidden ;
+      transition: max-height .375s ease ;
+      background-image: linear-gradient(to bottom right, #99999980 0%, #00000080 100%) ;
+    }
   }
 }
 

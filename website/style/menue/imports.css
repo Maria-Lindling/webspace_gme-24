@@ -1,0 +1,27 @@
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*          Rules           */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+/* preserved rule remnant, not in use */
+@font-face {
+  font-family: 'menueschrift' ;
+  /* src: url('../style/Chalk-Regular.ttf') ; */
+  src: url('../../style/VT323-Regular.ttf') ;
+}
+
+@font-face {
+  font-family: 'ionicons' ;
+  src: url('../../style/ionicons/ionicons.woff') ;
+}
+
+/*
+@media screen and (min-width: 720px ) and (max-width: 1080px) {
+  #hauptnav {
+    border: solid 2px #f11 !important;
+  }
+}
+*/
