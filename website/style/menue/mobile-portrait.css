@@ -20,24 +20,6 @@
     
     transform: translate(0, -1.875em) ;
     transition: all 0.375s ease ;
-    
-    &:hover, &:active {
-      min-height: 6em ;
-  
-      .mobile-exclusive {
-        max-height: 0 ;
-      }
-    
-      > nav-menu {
-        overflow: initial ;
-      
-        max-height: 1.875em ;
-        
-        &:hover, &:active {
-          max-height: 24em ;
-        }
-      }
-    }
   
     > div, > nav-menu {
       margin: auto ;
@@ -57,8 +39,28 @@
       font-size: 2em ;
     }
     
-    nav-menu:hover menu-body, nav-menu:active menu-body {
-      overflow: initial ;
+    @media (hover: hover) {
+      &:hover {
+        min-height: 8em ;
+    
+        .mobile-exclusive {
+          max-height: 0 ;
+        }
+      
+        > nav-menu {
+          overflow: initial ;
+        
+          max-height: 1.875em ;
+          
+          &:hover, &:active {
+            max-height: 36em ;
+          }
+        }
+      }
+    
+      nav-menu:hover menu-body {
+        overflow: initial ;
+      }
     }
   
     .mobile-exclusive {

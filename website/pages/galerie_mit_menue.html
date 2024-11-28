@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Galerie mit Menue</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="../style/galerie.css" />
+		<link rel="stylesheet" href="../style/menue/imports.css" />
+		<link rel="stylesheet" href="../style/menue/initial.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/desktop-landscape.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/mobile-landscape.css" />
+		<link rel="stylesheet" media="screen" href="../style/menue/mobile-portrait.css" />
+		<link rel="stylesheet" media="print"  href="../style/menue/print.css" />
+    <!---->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!---->
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+		</script>
+	</head>
+	<body>
+    
+    <nav id="hauptnav">
+      <div class="icon html5icon desktop-exclusive">
+        &#xf4e3;
+      </div>
+      <div class="icon mobile-exclusive">
+        &#xf394;
+      </div>
+      <nav-menu>
+        <menu-head>
+          Natur 🌄
+        </menu-head>
+        <menu-body>
+          <a href="#motiv_01">Himmel und Erde</a>
+          <a href="#motiv_02">Doppel-Regenbogen</a>
+          <a href="#motiv_03">Feldidylle</a>
+          <a href="#motiv_04">Vogelperspektive über Wald</a>
+          <a href="#motiv_05">Gasthof auf Berg</a>
+          <a href="#motiv_08">Ruhiger Steinbruch</a>
+          <a href="#motiv_09">Meereshimmel</a>
+          <a href="#motiv_11">Sonnenuntergang über Fluss</a>
+          <a href="#motiv_12">Autobahn im Zwielicht</a>
+          <a href="#motiv_13">Aussichtsplatform über Wald</a>
+          <a href="#motiv_14">Alte Festungsmauer</a>
+          <a href="#motiv_15">Dorf in blauer Ferne</a>
+          <a href="#motiv_16">Dorfhäuser am Waldrand</a>
+          <a href="#motiv_17">Schnee von Gestern</a>
+          <a href="#motiv_20">Käfer auf der Hand</a>
+          <a href="#motiv_21">Azurteich</a>
+          <a href="#motiv_22">Herbstspaziergang</a>
+          <a href="#motiv_23">Ein Strauß aus Bäumen</a>
+          <a href="#motiv_24">Tigerkröte und Lurch</a>
+          <a href="#motiv_25">Wildblumen</a>
+          <a href="#motiv_26">Wespe jagt Zucker</a>
+          <a href="#motiv_30">Blume in Rosarot und Sonnenabend</a>
+          <a href="#motiv_32">Schmetterling</a>
+        </menu-body>
+      </nav-menu>
+      <nav-menu>
+        <menu-head>
+          Kultur 🎭
+        </menu-head>
+        <menu-body>
+          <a href="#motiv_05">Gasthof auf Berg</a>
+          <a href="#motiv_07">Trinkwasserbrunnen, Kein Trinkwasser</a>
+          <a href="#motiv_14">Alte Festungsmauer</a>
+          <a href="#motiv_15">Dorf in blauer Ferne</a>
+          <a href="#motiv_16">Dorfhäuser am Waldrand</a>
+          <a href="#motiv_17">Schnee von Gestern</a>
+          <a href="#motiv_18">Modepuppenschau</a>
+          <a href="#motiv_19">Goldene Bohne</a>
+          <a href="#motiv_31">Ferner Horizont</a>
+          <a href="#motiv_34">Blumen in Glasvase</a>
+        </menu-body>
+      </nav-menu>
+      <nav-menu>
+        <menu-head>
+          Industrie 🏭
+        </menu-head>
+        <menu-body>
+          <a href="#motiv_08">Ruhiger Steinbruch</a>
+          <a href="#motiv_10">Leerer Bahnsteig</a>
+          <a href="#motiv_12">Autobahn im Zwielicht</a>
+          <a href="#motiv_27">Offene Bunkertür</a>
+          <a href="#motiv_29">Bootschleuse</a>
+          <a href="#motiv_35">Industriehalle mit Maschinen</a>
+          <a href="#motiv_36">Kessel und Leitern</a>
+          <a href="#motiv_37">Wolkenkratzer aus Rost</a>
+        </menu-body>
+      </nav-menu>
+      <nav-menu>
+        <menu-head>
+          Technik ⚙️
+        </menu-head>
+        <menu-body>
+          <a href="#motiv_06">Amaturenbrett eines Zwei-Sitzer Flugzeuges</a>
+          <a href="#motiv_27">Offene Bunkertür</a>
+          <a href="#motiv_28">Tunnel in Dunkle Vergangenheit</a>
+          <a href="#motiv_29">Bootschleuse</a>
+        </menu-body>
+      </nav-menu>
+    </nav>
+    
+    
+    <header>
+			<h1>
+				Galerie
+			</h1>
+		</header>
+		<main class="galerie">
+			<!--
+        Bilder-Ordner: ../media/img/Motiv_(01-37).jpg
+        Moviv_33.jpg ist nicht vorhanden
+      -->
+			<figure id="motiv_01" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_01">
+					<img src="../media/img/Motiv_01.jpg" alt="Himmel und Erde" />
+				</a>
+				<figcaption>
+					Himmel und Erde
+				</figcaption>
+			</figure>
+			<figure id="motiv_02" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_02">
+					<img src="../media/img/Motiv_02.jpg" alt="Doppel-Regenbogen" />
+				</a>
+				<figcaption>
+					Doppel-Regenbogen
+				</figcaption>
+			</figure>
+			<figure id="motiv_03" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_03">
+					<img src="../media/img/Motiv_03.jpg" alt="Feldidylle" />
+				</a>
+				<figcaption>
+					Feldidylle
+				</figcaption>
+			</figure>
+			<figure id="motiv_04" class="natur technik">
+				<a href="#">X</a>
+				<a href="#motiv_04">
+					<img src="../media/img/Motiv_04.jpg" alt="Vogelperspektive über Wald" />
+				</a>
+				<figcaption>
+					Vogelperspektive über Wald
+				</figcaption>
+			</figure>
+			<figure id="motiv_05" class="natur kultur">
+				<a href="#">X</a>
+				<a href="#motiv_05">
+					<img src="../media/img/Motiv_05.jpg" alt="Gasthof auf Berg" />
+				</a>
+				<figcaption>
+					Gasthof auf Berg
+				</figcaption>
+			</figure>
+			<figure id="motiv_06" class="technik">
+				<a href="#">X</a>
+				<a href="#motiv_06">
+					<img src="../media/img/Motiv_06.jpg" alt="Amaturenbrett eines Zwei-Sitzer Flugzeuges" />
+				</a>
+				<figcaption>
+					Amaturenbrett eines Zwei-Sitzer Flugzeuges
+				</figcaption>
+			</figure>
+			<figure id="motiv_07" class="kurioses">
+				<a href="#">X</a>
+				<a href="#motiv_07">
+					<img src="../media/img/Motiv_07.jpg" alt="Trinkwasserbrunnen, Kein Trinkwasser" />
+				</a>
+				<figcaption>
+					Trinkwasserbrunnen, Kein Trinkwasser
+				</figcaption>
+			</figure>
+			<figure id="motiv_08" class="natur industrie">
+				<a href="#">X</a>
+				<a href="#motiv_08">
+					<img src="../media/img/Motiv_08.jpg" alt="Ruhiger Steinbruch" />
+				</a>
+				<figcaption>
+					Ruhiger Steinbruch
+				</figcaption>
+			</figure>
+			<figure id="motiv_09" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_09">
+					<img src="../media/img/Motiv_09.jpg" alt="Meereshimmel" />
+				</a>
+				<figcaption>
+					Meereshimmel
+				</figcaption>
+			</figure>
+			<figure id="motiv_10" class="industrie">
+				<a href="#">X</a>
+				<a href="#motiv_10">
+					<img src="../media/img/Motiv_10.jpg" alt="Leerer Bahnsteig" />
+				</a>
+				<figcaption>
+					Leerer Bahnsteig
+				</figcaption>
+			</figure>
+			<figure id="motiv_11" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_11">
+					<img src="../media/img/Motiv_11.jpg" alt="Sonnenuntergang über Fluss" />
+				</a>
+				<figcaption>
+					Sonnenuntergang über Fluss
+				</figcaption>
+			</figure>
+			<figure id="motiv_12" class="natur industrie">
+				<a href="#">X</a>
+				<a href="#motiv_12">
+					<img src="../media/img/Motiv_12.jpg" alt="Autobahn im Zwielicht" />
+				</a>
+				<figcaption>
+					Autobahn im Zwielicht
+				</figcaption>
+			</figure>
+			<figure id="motiv_13" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_13">
+					<img src="../media/img/Motiv_13.jpg" alt="Aussichtsplatform über Wald" />
+				</a>
+				<figcaption>
+					Aussichtsplatform über Wald
+				</figcaption>
+			</figure>
+			<figure id="motiv_14" class="natur kultur">
+				<a href="#">X</a>
+				<a href="#motiv_14">
+					<img src="../media/img/Motiv_14.jpg" alt="Alte Festungsmauer" />
+				</a>
+				<figcaption>
+					Alte Festungsmauer
+				</figcaption>
+			</figure>
+			<figure id="motiv_15" class="natur kultur">
+				<a href="#">X</a>
+				<a href="#motiv_15">
+					<img src="../media/img/Motiv_15.jpg" alt="Dorf in blauer Ferne" />
+				</a>
+				<figcaption>
+					Dorf in blauer Ferne
+				</figcaption>
+			</figure>
+			<figure id="motiv_16" class="natur kultur">
+				<a href="#">X</a>
+				<a href="#motiv_16">
+					<img src="../media/img/Motiv_16.jpg" alt="Dorfhäuser am Waldrand" />
+				</a>
+				<figcaption>
+					Dorfhäuser am Waldrand
+				</figcaption>
+			</figure>
+			<figure id="motiv_17" class="natur kultur">
+				<a href="#">X</a>
+				<a href="#motiv_17">
+					<img src="../media/img/Motiv_17.jpg" alt="Schnee von Gestern" />
+				</a>
+				<figcaption>
+					Schnee von Gestern
+				</figcaption>
+			</figure>
+			<figure id="motiv_18" class="kultur">
+				<a href="#">X</a>
+				<a href="#motiv_18">
+					<img src="../media/img/Motiv_18.jpg" alt="Modepuppenschau" />
+				</a>
+				<figcaption>
+					Modepuppenschau
+				</figcaption>
+			</figure>
+			<figure id="motiv_19" class="kultur">
+				<a href="#">X</a>
+				<a href="#motiv_19">
+					<img src="../media/img/Motiv_19.jpg" alt="Goldene Bohne" />
+				</a>
+				<figcaption>
+					Goldene Bohne
+				</figcaption>
+			</figure>
+			<figure id="motiv_20" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_20">
+					<img src="../media/img/Motiv_20.jpg" alt="Käfer auf der Hand" />
+				</a>
+				<figcaption>
+					Käfer auf der Hand
+				</figcaption>
+			</figure>
+			<figure id="motiv_21" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_21">
+					<img src="../media/img/Motiv_21.jpg" alt="Azurteich" />
+				</a>
+				<figcaption>
+					Azurteich
+				</figcaption>
+			</figure>
+			<figure id="motiv_22" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_22">
+					<img src="../media/img/Motiv_22.jpg" alt="Herbstspaziergang" />
+				</a>
+				<figcaption>
+					Herbstspaziergang
+				</figcaption>
+			</figure>
+			<figure id="motiv_23" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_23">
+					<img src="../media/img/Motiv_23.jpg" alt="Ein Strauß aus Bäumen" />
+				</a>
+				<figcaption>
+					Ein Strauß aus Bäumen
+				</figcaption>
+			</figure>
+			<figure id="motiv_24" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_24">
+					<img src="../media/img/Motiv_24.jpg" alt="Tigerkröte und Lurch" />
+				</a>
+				<figcaption>
+					Tigerkröte und Lurch
+				</figcaption>
+			</figure>
+			<figure id="motiv_25" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_25">
+					<img src="../media/img/Motiv_25.jpg" alt="Wildblumen" />
+				</a>
+				<figcaption>
+					Wildblumen
+				</figcaption>
+			</figure>
+			<figure id="motiv_26" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_26">
+					<img src="../media/img/Motiv_26.jpg" alt="Wespe jagt Zucker" />
+				</a>
+				<figcaption>
+					Wespe jagt Zucker
+				</figcaption>
+			</figure>
+			<figure id="motiv_27" class="industrie technik">
+				<a href="#">X</a>
+				<a href="#motiv_27">
+					<img src="../media/img/Motiv_27.jpg" alt="Offene Bunkertür" />
+				</a>
+				<figcaption>
+					Offene Bunkertür
+				</figcaption>
+			</figure>
+			<figure id="motiv_28" class="industrie">
+				<a href="#">X</a>
+				<a href="#motiv_28">
+					<img src="../media/img/Motiv_28.jpg" alt="Tunnel in Dunkle Vergangenheit" />
+				</a>
+				<figcaption>
+					Tunnel in Dunkle Vergangenheit
+				</figcaption>
+			</figure>
+			<figure id="motiv_29" class="industrie technik">
+				<a href="#">X</a>
+				<a href="#motiv_29">
+					<img src="../media/img/Motiv_29.jpg" alt="Bootschleuse" />
+				</a>
+				<figcaption>
+					Bootschleuse
+				</figcaption>
+			</figure>
+			<figure id="motiv_30" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_30">
+					<img src="../media/img/Motiv_30.jpg" alt="Blume in Rosarot und Sonnenabend" />
+				</a>
+				<figcaption>
+					Blume in Rosarot und Sonnenabend
+				</figcaption>
+			</figure>
+			<figure id="motiv_31" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_31">
+					<img src="../media/img/Motiv_31.jpg" alt="Ferner Horizont" />
+				</a>
+				<figcaption>
+					Ferner Horizont
+				</figcaption>
+			</figure>
+			<figure id="motiv_32" class="natur">
+				<a href="#">X</a>
+				<a href="#motiv_32">
+					<img src="../media/img/Motiv_32.jpg" alt="Schmetterling" />
+				</a>
+				<figcaption>
+					Schmetterling
+				</figcaption>
+			</figure>
+			<!--figure id="motiv_33" class="">
+				<a href="#">X</a>
+				<a href="#motiv_33">
+					<img src="../media/img/Motiv_33.jpg" alt="Motiv_33" />
+				</a>
+				<figcaption>
+					Beispiel
+				</figcaption>
+			</figure-->
+			<figure id="motiv_34" class="kultur">
+				<a href="#">X</a>
+				<a href="#motiv_34">
+					<img src="../media/img/Motiv_34.jpg" alt="Blumen in Glasvase" />
+				</a>
+				<figcaption>
+					Glasvase
+				</figcaption>
+			</figure>
+			<figure id="motiv_35" class="industrie">
+				<a href="#">X</a>
+				<a href="#motiv_35">
+					<img src="../media/img/Motiv_35.jpg" alt="Industriehalle mit Maschinen" />
+				</a>
+				<figcaption>
+					Industriehalle mit Maschinen
+				</figcaption>
+			</figure>
+			<figure id="motiv_36" class="industrie">
+				<a href="#">X</a>
+				<a href="#motiv_36">
+					<img src="../media/img/Motiv_36.jpg" alt="Kessel und Leitern" />
+				</a>
+				<figcaption>
+					Kessel und Leitern
+				</figcaption>
+			</figure>
+			<figure id="motiv_37" class="industrie">
+				<a href="#">X</a>
+				<a href="#motiv_37">
+					<img src="../media/img/Motiv_37.jpg" alt="Wolkenkratzer aus Rost" />
+				</a>
+				<figcaption>
+					Wolkenkratzer aus Rost
+				</figcaption>
+			</figure>
+		</main>
+    
+		
+	</body>
+</html>
