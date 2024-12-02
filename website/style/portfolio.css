@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'ionicons' ;
+  src: url('../style/ionicons/ionicons.woff') ;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Calibri, Helvetica, sans-serif ;
+}
+
+article > section:nth-child(1), article > section > section {
+  border-radius: 0.875rem ;
+  box-shadow: 0 0 0.3875rem #000 ;
+  margin: 0.19325rem ;
+  
+  background-color: #c6c6c6 ;
+  
+  > ul {
+    padding: 0 0 0 1em ;
+  }
+}
+
+ion-icon {
+  display: inline-block ;
+  vertical-align: middle ;
+}
+
+body {
+  display: flex ;
+  flex-direction: column ;
+  flex-wrap: nowrap ;
+  justify-content: flex-start ;
+  
+  margin: 0 ;
+      
+  background-image:
+    linear-gradient(
+      to bottom,
+      #ccccff00 0%,
+      #33cc99ff 38.75%,
+      #009999ff 70%,
+      #0099ffff 100%
+    )
+  ;
+  background-repeat: no-repeat ;
+  background-attachment: fixed ;
+
+  > main {
+    margin: 1.875rem 0 0 0 ;
+    
+    > article {
+      display: flex ;
+      flex-direction: column ;
+      flex-wrap: nowrap ;
+      justify-content: flex-start ;
+      
+      padding: 0.3875rem 0 0 0 ;
+      margin: 0 ;
+      
+      section {
+        padding: 0.3875rem 1rem 0.3875rem 1rem ;
+        min-width: 16rem ;
+        min-height: 21rem ;
+        
+        > h2, > h3 {
+          display: block ;
+          border-bottom: 1px solid #444 ;
+          
+          font-size: 1em ;
+          text-align: left ;
+        }
+      }
+      
+      > section:nth-child(1) {
+        grid-area: base_info ;
+        
+        /* border: 1px solid #f22 ; */
+        margin: 0 auto 0.875rem auto ;
+      }
+      
+      > section:nth-child(2) {
+        grid-area: add_info ;
+        display: flex ;
+        flex-direction: row ;
+/*      flex-wrap: nowrap;                                                    */
+/*      justify-content: space-evenly;                                        */
+        
+        padding: 0.3875rem 1rem 0.3875rem 1rem ;
+        width: 100vw ;
+        
+        background-image:
+          linear-gradient(
+            to right,
+            #ccccff00 0%,
+            #ccccfff2 15%,
+            #ccccffff 85%,
+            #ccccff00 100%
+          )
+        ;
+        
+        > section {
+        }
+        
+        > section:nth-child(1) {
+          
+          /* border: 1px solid #2f2 ; */
+        }
+        
+        > section:nth-child(2) {
+          
+          /* border: 1px solid #22f ; */
+        }
+        
+        > section:nth-child(3) {
+          
+          /* border: 1px solid #ff2 ; */
+        }
+      }
+    }
+  }
+}

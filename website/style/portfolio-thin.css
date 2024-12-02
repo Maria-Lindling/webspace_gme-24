@@ -1,0 +1,38 @@
+/* #### #### #### #### #### */
+/* #### ####      #### #### */
+/* ####                #### */
+/*   thin viewport rules    */
+/*       phone format       */
+/* ####                #### */
+/* #### ####      #### #### */
+/* #### #### #### #### #### */
+
+@media (max-width: 50rem ) {
+  body {
+    > main {
+      > article {
+        section {
+        }
+        
+        > section:nth-child(1) {
+        }
+        
+        > section:nth-child(2) {
+          flex-direction: column ;
+          flex-wrap: wrap;
+          justify-content: flex-start ;
+          align-content: center ;
+          
+          > section:nth-child(1) {
+          }
+          
+          > section:nth-child(2) {
+          }
+          
+          > section:nth-child(3) {
+          }
+        }
+      }
+    }
+  }
+}
