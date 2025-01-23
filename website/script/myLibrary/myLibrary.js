@@ -29,7 +29,6 @@ const myLibrary = {
     }
 
     this.toString = function () {
-
       return `#${
         this._red.toString(16)}${
         this._green.toString(16)}${

@@ -77,22 +77,14 @@
       console.log( tastenListe ) ;
       for( const element of tastenListe ) {
         element.className = 'taste' ;
-<<<<<<< HEAD
-=======
-        element.style.transform = `rotate( ${
-          Math.floor(Math.random()*defaults.JITTERANGLE-defaults.JITTERANGLE/2)
-        }deg )` ;
->>>>>>> db1994266ecdefab3482be730ade62ab75e24b03
       }
 
       let paragraph = document.createElement('p') ;
       paragraph.innerText = 'Lorem ipsum' ;
       spielfeld.append(paragraph) ;
 
-<<<<<<< HEAD
       var intervalLoop = window.setInterval(function () {
-        const currentJitter = Math.floor(Math.random()*defaults.JITTERANGLE -
-          defaults.JITTERANGLE/2) ;
+
         spielfeld.style.transform = `rotate(${
           Math.floor(Math.random()*defaults.JITTERANGLE -
           defaults.JITTERANGLE/2)
@@ -103,11 +95,10 @@
             Math.floor(Math.random()*defaults.JITTERANGLE -
             defaults.JITTERANGLE/2)
             }deg)` ;
+
         }
       }, 200 ) ;
 
-=======
->>>>>>> db1994266ecdefab3482be730ade62ab75e24b03
     </script>
 	</body>
 </html>
