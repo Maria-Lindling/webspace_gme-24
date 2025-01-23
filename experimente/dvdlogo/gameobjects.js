@@ -50,11 +50,11 @@ class GameObject {
       ( ( typeof values.posX !== 'undefined') ?
         values.posX : GameObject.defaults.box.left ),
       ( ( typeof values.posY !== 'undefined') ?
-      values.posY : GameObject.defaults.box.right ),
+        values.posY : GameObject.defaults.box.right ),
       ( ( typeof values.w    !== 'undefined') ?
-      values.w : GameObject.defaults.box.width ),
+        values.w : GameObject.defaults.box.width ),
       ( ( typeof values.h    !== 'undefined') ?
-      values.h : GameObject.defaults.box.height )
+        values.h : GameObject.defaults.box.height )
     ) ;
     
     this.dir    = new Vector(
@@ -125,14 +125,15 @@ class BouncyObject {
   constructor(domElement, displaySurface) {
     this.domElement = domElement ;
     this.canvas     = displaySurface ;
-    
+    let style       = getComputedStyle(domElement) ;
+
     /** @inheritdoc */
     this.__proto__ = new GameObject(
       {
-        posX: this.domElement.offsetLeft,
-        posY: this.domElement.offsetTop,
-        w: this.domElement.clientWidth,
-        h: this.domElement.clientHeight
+        posX: parseInt( style["left"].slice(0, -2) ),
+        posY: parseInt( style["top"].slice(0, -2) ),
+        w: parseInt( style["width"].slice(0, -2) ),
+        h: parseInt( style["height"].slice(0, -2) )
       }
     ) ;
     
