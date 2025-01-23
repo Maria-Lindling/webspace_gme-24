@@ -5,20 +5,87 @@
 			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Experimente mit JavaScript</title>
+		<title>Document Object Model - Experimente mit JavaScript</title>
 		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
 		<link rel="stylesheet" href="pfad/zu/datei.css" />
 		<style>
 			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+      * {
+        box-sizing: border-box ;
+      }
+
+      .gedreht {
+        transform: rotate( -5deg ) ;
+      }
+
+      .taste {
+        display: block ;
+        width: 5em ;
+        height: 2em ;
+        border: solid 1px #ff0000 ;
+        border-radius: 0.3em ;
+        /* margin: auto ; */
+        text-align: center ;
+      }
 		</style>
-		<script src="../script/myLibrary.js"></script>
+		<script src="../script/myLibrary/myLibrary.js"></script>
 		<script>
 			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
 		</script>
 	</head>
 	<body>
 		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
-    <h1>JavaScript-Experimente</h1>
-    <h2>Document Object Model</h2>
+    <header>
+      <h1>JavaScript-Experimente</h1>
+      <h2>Document Object Model</h2>
+    </header>
+    <nav>
+      <a href="#">Hierin</a>
+      <a href="#">Dahin</a>
+      <a href="#">Dorthin</a>
+    </nav>
+    <main id="spielfeld">
+    
+    </main>
+    <aside id="spielregeln">
+    
+    </aside>
+    <footer>
+      Rechtliches...
+    </footer>
+    <script>
+      const defaults = {
+        "JITTERANGLE" : 10,
+        "spielfeld" : {
+          "width" : 640,
+          "height": 480,
+          "backgroundColor" : new myLibrary.Color("33",255,"cc")
+        }
+      }
+
+      let spielfeld = document.getElementById("spielfeld") ;
+      console.log( spielfeld ) ;
+      spielfeld.style.width  = `${defaults.spielfeld.width}px` ;
+      spielfeld.style.height = `${defaults.spielfeld.height}px` ;
+      spielfeld.style.backgroundColor = defaults.spielfeld
+        .backgroundColor
+        .toString() ;
+      spielfeld.className = 'gedreht' ;
+
+      /* Wählt Elemente im syntax von CSS-Regeln aus. */
+      let tastenListe = document.querySelectorAll('nav > a') ;
+      console.log( tastenListe ) ;
+      for( const element of tastenListe ) {
+        element.className = 'taste' ;
+        element.style.transform = `rotate( ${
+          Math.floor(Math.random()*defaults.JITTERANGLE-defaults.JITTERANGLE/2)
+        }deg )` ;
+      }
+
+      let paragraph = document.createElement('p') ;
+      paragraph.innerText = 'Lorem ipsum' ;
+      spielfeld.append(paragraph) ;
+
+    </script>
 	</body>
 </html>

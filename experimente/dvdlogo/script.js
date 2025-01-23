@@ -5,27 +5,17 @@
  * <c>addGameObject</c> Method for <c>Canvas</c>.
  */
 function initGame() {
-  gameCanvas.gameObjects.push(
-    new BouncyObject( document.getElementById("dvd1"), gameCanvas )
-  ) ;
+  const nodeList = window.gameCanvas.domElement.getElementsByClassName("dvd") ;
   
-  var secondLogo = new BouncyObject( document.getElementById("dvd2"), gameCanvas ) ;
-  secondLogo.dir.y = -1 ;
-  gameCanvas.gameObjects.push( secondLogo ) ;
-  
-  var thirdLogo = new BouncyObject( document.getElementById("dvd3"), gameCanvas ) ;
-  thirdLogo.dir.x = -1 ;
-  gameCanvas.gameObjects.push( thirdLogo ) ;
-  
-  var fourthLogo = new BouncyObject( document.getElementById("dvd4"), gameCanvas ) ;
-  fourthLogo.dir.x = -1 ;
-  fourthLogo.dir.y = -1 ;
-  gameCanvas.gameObjects.push( fourthLogo ) ;
-  
-  var fifthLogo = new BouncyObject( document.getElementById("dvd5"), gameCanvas ) ;
-  fifthLogo.dir.x = -1 ;
-  fifthLogo.dir.y = -1 ;
-  gameCanvas.gameObjects.push( fifthLogo ) ;
+  for( let i = 0 ; i < nodeList.length ; i++ ){
+    let item = nodeList.item(i) ;
+    if( item != null ) {
+      let dvd = new BouncyObject( nodeList.item(i), gameCanvas ) ;
+      dvd.dir.x = Math.floor( Math.random() * 2 ) > 0 ? 1 : -1 ;
+      dvd.dir.y = Math.floor( Math.random() * 2 ) > 0 ? 1 : -1 ;
+      gameCanvas.gameObjects.push( dvd ) ;
+    }
+  }
 }
 
 window.animate = function () {
