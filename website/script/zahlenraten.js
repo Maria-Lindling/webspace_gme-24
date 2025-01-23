@@ -46,9 +46,14 @@ class UserGuess {
     
     this.__proto__.toString = function () {
       return (
-        `${this.number} (${this._guessRelation}` +
-        ((!this.IsCorrect) ? `, off by ${this.offBy}` : "") +
-        ")"
+        `${this.number} <span class="sidenote">[` +
+        ((!this.IsCorrect) ?
+          `${(this.number > UserGuess.targetNumber) ?
+            "🔺" :
+            "🔻"
+          }${this.offBy}` :
+        "🏆") +
+        "]</span>"
       ) ;
     }
   }
