@@ -114,7 +114,11 @@ function zahlenraten( lowerLimit, upperLimit, attempts ) {
   console.log( `targetNumber: ${UserGuess.targetNumber}` ) ;
   
   // with this prompt the program begins
-  let currentGuess  = new UserGuess( prompt( guessPrompt ) );
+  let currentGuess  = new UserGuess( prompt(
+    `You have ${attempts} attempts to guess the secret number ` +
+    `between ${lowerLimit} and ${upperLimit}.\n Have fun!`
+  ) );
+  attempts-- ;
 
   while( !currentGuess.IsCorrect && attempts > 0 )
   {
