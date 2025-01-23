@@ -1,7 +1,10 @@
 /**
  * Represents a guess.
- * @constructor 
- * @param {number} userNumber - The number the user guessed.
+ * @property {boolean} IsCorrect
+ * @property {boolean} IsInBounds
+ * @static @property {number} targetNumber
+ * @static @property {number} lowerLimit
+ * @static @property {number} upperLimit
  */
 class UserGuess {
 
@@ -14,6 +17,10 @@ class UserGuess {
     this.targetNumber = numberBetween( this.lowerLimit, this.upperLimit ) ;
   }
   
+  /**
+   * @constructor 
+   * @param {number} userNumber - The number the user guessed.
+   */
   constructor( userNumber ) {
     
     this.number = parseInt( userNumber ) ;
