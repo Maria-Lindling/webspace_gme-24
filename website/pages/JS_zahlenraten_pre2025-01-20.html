@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Zahlenraten mit JavaScript</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+      const guess_prompt    = "Guess a number between 1 and 100:" ;
+      
+      /*
+        Rounding the random number down is equivalent to common randInt methods,
+        which produce a value beginning with zero and not including the given
+        multiplier.
+        Therefore I am using it this way, rather than rounding up.
+      */
+      let target_number     = 1 + Math.floor( Math.random() * 100 ) ;
+      
+      let last_user_number  = null ;
+      
+      // with this prompt the program begins
+      let user_number       = prompt( guess_prompt ) ;
+      
+      while( user_number != target_number )
+      {
+        if( isNaN(user_number) )
+        {
+          user_number = parseInt( prompt(
+            "That wasn't a number!" +
+            ((last_user_number != null) ? 
+              "\nYour last guess was " +
+              last_user_number +
+              ", which was too " +
+              ((last_user_number > target_number) ? "high" : "low") +
+              ".\n"
+              :
+              "\n") +
+            guess_prompt
+          ) ) ;
+          
+        } else if( user_number > 100 || user_number < 1 ) {
+          user_number = parseInt( prompt(
+            "Your guess was out of bounds!" +
+            ((last_user_number != null) ? 
+              "\nYour last guess was " +
+              last_user_number +
+              ", which was too " +
+              ((last_user_number > target_number) ? "high" : "low") +
+              ".\n"
+              :
+              "\n") +
+            guess_prompt
+          ) ) ;
+          
+        } else {
+          last_user_number = user_number ;
+          user_number = parseInt( prompt(
+            "Wrong!\nYour guess of " +
+            user_number +
+            " was too " +
+            ((last_user_number > target_number) ? "high" : "low") +
+            ".\nTry again:"
+          ) ) ;
+        }
+        
+      }
+      alert( "Congratulations! The number was " + target_number + "." ) ;
+      // EOF
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>JavaScript-Zahlenraten</h1>
+	</body>
+</html>

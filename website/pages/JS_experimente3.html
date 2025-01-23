@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Experimente mit JavaScript 3</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+      
+      window.onload = function () {
+        let shoppingPrompt = "Add something to the shopping list." +
+        "\nType 'done' to finish." ;
+        
+        let shoppingList = [] ;
+        let entry = prompt(shoppingPrompt) ;
+        
+        while ( entry != 'done' )
+        {
+          shoppingList.push(entry) ;
+          console.log(shoppingList) ;
+          entry = prompt(shoppingPrompt) ;
+        }
+        
+        let shoppingListElement = document.getElementById("shoppingList") ;
+        
+        for ( let entry of shoppingList ) {
+          shoppingListElement.innerHTML += '<li>' + entry + '</li>' ;
+        }
+      }
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>JavaScript-Experimente</h1>
+    
+    <ol id="shoppingList">
+      <!--script>
+        for ( let entry of shoppingList ) {
+          document.write( '<li>' + entry + '</li>' ) ;
+        }
+      </script-->
+    </ol>
+	</body>
+</html>

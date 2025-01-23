@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Experimente mit JavaScript</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+      console.log( "---- String ----" ) ;
+      console.log( "     Function: indexOf, search" ) ;
+      console.log( ("Baumhaustüre").search(/b[\w\u00F0-\u02AF]+?m/ig) ) ;
+      console.log( ("Baumhaustüre").search(/h[\w\u00F0-\u02AF]+?s/ig) ) ;
+      console.log( ("Baumhaustüre").search(/t[\w\u00F0-\u02AF]+?e/ig) ) ;
+      console.log( "---- Number ----" ) ;
+      console.log( "Hex 0xff: " + 0xff ) ;
+      console.log( "Exponenzialscheibweise: " + 123456789e-5 ) ;
+      console.log( "Exponentzialoperation: " + 5**3 ) ;
+      console.log( "Modulooperation: " + (22+5)%24 ) ;
+      console.log( "---- Boolean ----" ) ;
+      console.log( typeof (  3  ) ) ;
+      console.log( typeof ( '3' ) ) ;
+      console.log( 3 ==  '3' ) ;
+      console.log( 3 === '3' ) ;
+      console.log( typeof ( 3 ) == typeof ( 0 ) ) ;
+      let placeholder_variable ;
+      console.log( typeof ( placeholder_variable ) ) ;
+      placeholder_variable = "Sword" ;
+      console.log( placeholder_variable ) ;
+      // undefined steht für eine deklarierte,
+      // aber undefinierte Variable
+      placeholder_variable = undefined ;
+      console.log( placeholder_variable ) ;
+      
+      // null steht für ein nicht vorhendenes Objekt
+      console.log( typeof ( null ) ) ;
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>JavaScript-Experimente</h1>
+	</body>
+</html>

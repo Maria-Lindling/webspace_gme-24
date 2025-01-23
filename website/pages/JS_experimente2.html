@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Experimente mit JavaScript</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+      function dieRoll(faces) {
+        return 1 + Math.floor( Math.random() * 100 ) % faces ;
+      }
+      function diceRoll(dice,faces) {
+        result = 0 ;
+        for (let i=0; i<dice;i++) {
+          result += dieRoll(faces) ;
+        }
+        return result ;
+      }
+      
+      function Stat(maxValue) {
+        this.maximum = maxValue ;
+        this.current = this.maximum ;
+      }
+      
+      function Actor(name) {
+        this.name           = name ;
+        this.strength       = new Stat( diceRoll(3,6) ) ;
+        this.dexterity      = new Stat( diceRoll(3,6) ) ;
+        this.willpower      = new Stat( diceRoll(3,6) ) ;
+        this.hitProtection  = new Stat( dieRoll(6)    ) ;
+        this.location       = null ;
+        this.whereAmI       = function() {
+          return "You are " + this.name +
+          ".\nYou're currently in " + this.location.name + "." ;
+        }
+      }
+      
+      function Location(name) {
+        this.name     = name ;
+        this.features = undefined ;
+      }
+      
+      const player_actor = new Actor(
+        prompt(
+          "Today we are creating an Into The Odd player character." +
+          "\nWhat is their name?" +
+          "\nEnter a name:"
+        )
+      ) ;
+      
+      player_actor.location = new Location("Starting Area") ;
+      
+      alert(
+        "Success!" +
+        "\n" + player_actor.name + " was created!" +
+        "\nThey have " + player_actor.strength.maximum + " STR, " +
+        player_actor.dexterity.maximum + " DEX and " +
+        player_actor.willpower.maximum + " WIL." +
+        "\nTheir Hit Protection is " + player_actor.hitProtection.maximum + "."
+      ) ;
+      
+      prompt(
+        player_actor.whereAmI() +
+        "\nWhat do you want to do?"
+      ) ;
+      
+      alert( "Oops! That's it. This is the end of the program." ) ;
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>JavaScript-Experimente</h1>
+	</body>
+</html>

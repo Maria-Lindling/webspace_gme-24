@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Experimente mit JavaScript</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+		</style>
+		<script src="pfad/zu/datei.js"></script>
+		<script>
+			/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+      
+      // Verzweigung mit switch
+      let player = {
+        "name": "me",
+        "posX": 0,
+        "posY": 0,
+        "speed": 10
+      }
+
+      let userEntry = prompt("Enter a direction:") ;
+
+      while( userEntry.toLowerCase() != "stop" ) {
+        switch (userEntry.toLowerCase())
+        {
+          case "west":
+          case "left":
+            player.posX -= player.speed ;
+            break ;
+            
+          case "east":
+          case "right":
+            player.posX += player.speed ;
+            break ;
+            
+          case "north":
+          case "up":
+          case "top":
+            player.posY -= player.speed ;
+            break ;
+            
+          case "south":
+          case "down":
+          case "bottom":
+            player.posY += player.speed ;
+            break ;
+          default:
+            console.log(`Invalid direction &quot;${userEntry}&quot;!`) ;
+        }
+
+        console.log(`Player position is (${player.posX},${player.posY})`) ;
+        userEntry = prompt(`Player position is (${player.posX},${player.posY}).` +
+          "\nEnter a direction:") ;
+      }
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>JavaScript-Experimente</h1>
+	</body>
+</html>
