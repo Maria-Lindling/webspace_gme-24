@@ -1,6 +1,12 @@
 # temp and scratchpad
 /tmp
 
+# IDE stuff
+/.vs
+
+# Documentation output
+**/out
+
 # Logs
 logs
 *.log
