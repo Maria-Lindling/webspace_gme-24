@@ -182,6 +182,10 @@ class BouncyObject {
       this.domElement.style.left  = this.box.left + "px" ;
       this.domElement.style.top   = this.box.top + "px" ;
     }
+
+    this.Destroy = function () {
+      this.domElement.parentElement.removeChild( this.domElement ) ;
+    }
   }
 
 /*   Update() {

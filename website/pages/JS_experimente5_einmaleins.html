@@ -19,16 +19,62 @@
 	<body>
 		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
     <h1>JavaScript-Experimente</h1>
-    <table>
-      <script>
-        for(let row = 1 ; row <= 100 ; row++) {
-          document.write("<tr>") ;
-          for(let col = 1 ; col <= 100 ; col++) {
-            document.write("<td>" + row * col + "</td>") ;
-          }
-          document.write("</tr>") ;
+    <script>
+      let multRange = -1 ;
+      while( multRange < 1 || multRange > 100 ) {
+        multRange = parseInt( prompt(
+          "Wie groß soll das Einmaleins sein?" + 
+          "\n gib eine Zahl zwischen 1 und 100 ein!"
+        ) ) ;
+      }
+
+      /**
+       * Encloses the given string with a provided HTML-tag.
+       * ⚠️ This function is unsafe! There is NO built-in tag-validation!
+       * @param {String} value
+       * @param {String} tagName
+       * @returns {String}
+       */
+      function encloseWithTag(value, tagName) {
+        return `<${tagName}>${value}</${tagName}>` ;
+      }
+      
+      /**
+       * @param {Node} parent
+       * @param {Number} row
+       * @param {Number} range
+       * @returns {Node}
+       */
+      function extrapolateRowData(row, range) {
+        let result = document.createElement("tr") ;
+        for(let col = 1 ; col <= range ; col++) {
+          result.appendChild(document.createElement("td")).innerText = row*col ;
         }
-      </script>
-    </table>
+        return result ;
+      }
+
+      /**
+       * @param {Node} parent
+       * @param {Number} range
+       */
+      function extrapolateTableCells(parent, range) {
+        for(let row = 1 ; row <= range ; row++) {
+          parent.appendChild( extrapolateRowData(row, range) ) ;
+        }
+      }
+
+      /**
+       * @param {Number} range
+       */
+      function einmaleins(range) {
+        extrapolateTableCells(
+          document
+            .querySelector("body")
+            .appendChild(document.createElement("table")),
+        range) ;
+      }
+
+      einmaleins(multRange) ;
+    </script>
 	</body>
 </html>
