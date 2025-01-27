@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Video Danger</title>
+    <style>
+      /* CSS based on the code seen here: */
+      /* https://codepen.io/RobotWizard/pen/rRVKVa */
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #black {
+        height: 100vh;
+        width: 100vw;
+        background-color: #111;
+      }
+
+      .dvd {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 45px;
+        width: 100px;
+        mask: url("https://upload.wikimedia.org/wikipedia/commons/9/9b/DVD_logo.svg");
+        -webkit-mask: url("https://upload.wikimedia.org/wikipedia/commons/9/9b/DVD_logo.svg");
+        background-repeat: no-repeat;
+        background-size: 75px;
+        background-position: center;
+      }
+    </style>
+    <script type="text/javascript" src="./experimente/dvdlogo/geometry.js"></script>
+    <script type="text/javascript" src="./experimente/dvdlogo/gameobjects.js"></script>
+    <script type="text/javascript" src="./experimente/dvdlogo/world.js"></script>
+    <script type="text/javascript" src="./experimente/dvdlogo/script.js"></script>
+  </head>
+  <body>    
+    <div id="black">
+      <div class="dvd" style="left:  20px; top:  20px;"></div>
+      <div class="dvd" style="left: 137px; top: 223px;"></div>
+      <div class="dvd" style="left: 323px; top:  37px;"></div>
+      <div class="dvd" style="left: 423px; top:  37px;"></div>
+      <div class="dvd" style="left: 323px; top: 337px;"></div>
+    </div>
+  </body>
+</html>
