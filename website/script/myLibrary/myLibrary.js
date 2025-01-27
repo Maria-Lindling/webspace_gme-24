@@ -1,5 +1,7 @@
 /** @module myLibrary */
 
+"use strict" ;
+
 /** @namespace */
 const myLibrary = {
   /***

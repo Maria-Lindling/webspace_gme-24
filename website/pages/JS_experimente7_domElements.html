@@ -54,6 +54,8 @@
       Rechtliches...
     </footer>
     <script>
+      "use strict" ;
+      
       const defaults = {
         "JITTERANGLE" : 10,
         "spielfeld" : {
@@ -80,8 +82,8 @@
       }
 
       let paragraph = document.createElement('p') ;
-      paragraph.innerText = 'Lorem ipsum' ;
-      spielfeld.append(paragraph) ;
+      paragraph.innerText = 'Inhalt des Absatzes' ;
+      spielfeld.appendChild(paragraph) ;
 
       var intervalLoop = window.setInterval(function () {
 
@@ -89,6 +91,7 @@
           Math.floor(Math.random()*defaults.JITTERANGLE -
           defaults.JITTERANGLE/2)
           }deg)` ;
+
         for( const element of document.querySelectorAll('nav > a') ) {
           element.className = 'taste' ;
           element.style.transform = `rotate(${
@@ -99,6 +102,46 @@
         }
       }, 200 ) ;
 
+      /**
+       * @param {Array.<String>} liste
+       * @param {Boolean} [nummeriert] - produces an <ol> if set to true and an
+       * <ul> if set to false or not specified
+       * @returns {Node}
+       */
+      function auflisten( liste, nummeriert = false ) {
+        let domListe = document.createElement( (nummeriert) ? "ol" : "ul" ) ;
+        for( let eintrag of liste ) {
+          domListe.appendChild(
+            document.createElement("li")
+            ).innerText = eintrag ;
+        }
+        return domListe ;
+      }
+
+      let beispielListe = [
+        "PRG", "ALD", "GDP", "PIP", "TMG", "DBK", "ENG", "BWL", "GEK", "KOM"
+      ] ;
+
+      spielfeld.appendChild( auflisten(beispielListe, true) ) ;
+      console.log( spielfeld.childNodes[2] ) ;
+
+      // deleting a child element
+      /* spielfeld.removeChild(spielfeld.childNodes[0]) ; */
+      // alternatively:
+      //spielfeld.childNodes[2].parentNode.removeChild(spielfeld.childNodes[2]) ;
+
+      // Austausch von Elementen ;
+      let neuEintrag = document.createElement("li") ;
+      neuEintrag.innerText = "NAP" ;
+
+      spielfeld
+        .childNodes[2]
+          .replaceChild(
+          neuEintrag,
+          spielfeld
+            .childNodes[2]
+              .childNodes[4]
+      ) ;
     </script>
 	</body>
 </html>

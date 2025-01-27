@@ -5,7 +5,7 @@
  * <c>addGameObject</c> Method for <c>Canvas</c>.
  */
 function initGame() {
-  const nodeList = window.gameCanvas.domElement.getElementsByClassName("dvd") ;
+  const nodeList = window.gameCanvas.domElement.querySelectorAll(".dvd") ;
   
   for( let i = 0 ; i < nodeList.length ; i++ ){
     let item = nodeList.item(i) ;
