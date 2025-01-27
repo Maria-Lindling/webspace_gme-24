@@ -1,0 +1,3 @@
+﻿'abend', 'andendorf', 'andenstrasse', 'baltimore', 'blockhaus', 'bus',
+'chambord', 'cockpit', 'dorfstrasse', 'felsen', 'fluss', 'gorchfock',
+'grabmal', 'hotel', 'insel', 'karibikdorf', 'landung', 'lastesel'
