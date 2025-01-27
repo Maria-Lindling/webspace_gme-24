@@ -7,6 +7,9 @@
 # Documentation output
 **/out
 
+# Lecturer files
+/_AUSTAUSCH
+
 # Logs
 logs
 *.log
