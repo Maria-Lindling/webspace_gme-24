@@ -1,3 +1,5 @@
+"use strict" ;
+
 /**
  * A game object.
  * @property box {Rectangle} The bounding box of the object. Used for collision.
@@ -83,21 +85,21 @@ class GameObject {
     
     if( intersection.width < intersection.height ) {
       if( this.box.left == intersection.left ) {
-        this.left += intersection.width + 1 ;
+        this.box.left += intersection.width + 1 ;
         this.dir.x    = Math.abs(this.dir.x) ;
         gameObject.dir.x = -Math.abs(gameObject.dir.x) ;
       } else {
-        this.left -= (intersection.width + 1) ;
+        this.box.left -= (intersection.width + 1) ;
         this.dir.x    = -Math.abs(this.dir.x) ;
         gameObject.dir.x = Math.abs(gameObject.dir.x) ;
       }
     } else {
       if( this.box.top == intersection.top ) {
-        this.top += intersection.height + 1 ;
+        this.box.top += intersection.height + 1 ;
         this.dir.y    = Math.abs(this.dir.y) ;
         gameObject.dir.y = -Math.abs(gameObject.dir.y) ;
       } else {
-        this.top -= (intersection.height + 1) ;
+        this.box.top -= (intersection.height + 1) ;
         this.dir.y    = -Math.abs(this.dir.y) ;
         gameObject.dir.y = Math.abs(gameObject.dir.y) ;
       }
