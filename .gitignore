@@ -7,6 +7,9 @@
 # Documentation output
 **/out
 
+# nodejs
+**/node_modules
+
 # Lecturer files
 /_AUSTAUSCH
 
