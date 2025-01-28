@@ -24,7 +24,7 @@ const memoryLibrary = {
   },
   
   /**
-   * @deprecated
+   * @deprecated Not used anywhere.
    * @param {Array.<String>} liste
    * @param {Boolean} [nummeriert] - produces an &lt;ol&gt; if set to true and an
    * &lt;ul&gt; if set to false or not specified
@@ -39,23 +39,28 @@ const memoryLibrary = {
   },
 
   /**
-   * @param {Array.<String>} values
+   * Swaps the values at index1 and index2 within an Array.<br/>
+   * ⚠️ Warning! This returns the original array, which is mutated by this
+   * function!
+   * @param {Array.<*>} values
    * @param {Number} index1
    * @param {Number} index2
-   * @returns {Array.<String>}
+   * @returns {Array.<*>}
    */
   swapValues: function (values, index1, index2) {
     let tmp = values[index1] ;
     values[index1] = values[index2] ;
     values[index2] = tmp ;
+    return values ;
   },
 
   /**
-   * Shuffles the provided Array.<String> and returns a new
-   * Array.<String> that has been randomized.
-   * @param {Array.<String>} values
+   * Shuffles the provided Array and returns a new Array that has been
+   * randomized.<br/>
+   * This function does not mutate the original Array.
+   * @param {Array.<*>} values
    * @param {Number} [thoroughness]
-   * @returns {Array.<String>}
+   * @returns {Array.<*>}
    */
   shuffle: function (values, thoroughness = 3) {
     const result = values.slice() ;
@@ -157,22 +162,22 @@ const memoryLibrary = {
 
   /**
   * Lists the names of all the available memory card motifs in the aside.
-  * @param {Node} outputElement 
+  * @param {HTMLElement} output 
   */
-  populateOutput: function ( outputElement ) {
-    outputElement.appendChild( document.createElement("ul") ) ;
+  populateOutput: function ( output ) {
+    output.appendChild( document.createElement("ul") ) ;
     for( let motiv of memoryLibrary.motive ) {
-      outputElement.firstElementChild.appendChild( document.createElement("li") ) ;
-      outputElement.firstElementChild.lastElementChild.innerText = motiv ;
+      output.firstElementChild.appendChild( document.createElement("li") ) ;
+      output.firstElementChild.lastElementChild.innerText = motiv ;
     }
   },
 
   /**
   * Adds game-relevant event-listeners to the document and play area.
-  * @param {Node} playAreaElement 
+  * @param {HTMLElement} playArea 
   */
-  populateEventListeners: function ( playAreaElement ) {
-    playAreaElement.addEventListener('click', memoryLibrary.handleClick) ;
+  populateEventListeners: function ( playArea ) {
+    playArea.addEventListener('click', memoryLibrary.handleClick) ;
     document.addEventListener('memoryPairSolved', memoryLibrary.handleSolvedPair) ;
     document.addEventListener('memoryGameSolved', memoryLibrary.handleGameSolved) ;
   },
@@ -180,8 +185,8 @@ const memoryLibrary = {
   /**
   * Creates a new play area and game objects to play with.
   * @see memoryLibrary.cleanup
-  * @param {Node} playArea 
-  * @param {Node} output 
+  * @param {HTMLElement} playArea 
+  * @param {HTMLElement} output 
   */
   gameSetup: function ( playArea, output ) {
     memoryLibrary.cleanup() ;

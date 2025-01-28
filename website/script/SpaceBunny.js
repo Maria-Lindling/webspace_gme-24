@@ -28,6 +28,28 @@ const SpaceBunny = {
         result.push( entry ) ;
       }
       return result ;
-    }
+    },
+    
+    /**
+     * Produces an HTMLElement that from an array containing only strings.
+     * @param {Array.<String>} list
+     * @param {Boolean} [numbered] produces an &lt;ol&gt; if set to true and an
+     * &lt;ul&gt; if set to false or not specified
+     * @param {Boolean} [unsafe] When set to true, the function won't throw
+     * an error if an entry of the Array is not a String.
+     * @returns {HTMLElement}
+     * @throws {TypeError} Throws an error if any entry in the Array is
+     * not a String.
+     */
+    listToElement: function ( list, numbered = false, unsafe = false ) {
+      let listElement = document.createElement( (numbered) ? "ol" : "ul" ) ;
+      for( let entry of list ) {
+        if( !unsafe && (typeof entry != 'string') ) { throw new TypeError() ; }
+        listElement
+          .appendChild( document.createElement("li") )
+          .innerText = entry ;
+      }
+      return listElement ;
+    },
   }
 }

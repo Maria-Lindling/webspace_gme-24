@@ -20,7 +20,7 @@ class Coordinate {
  * @property {HTMLElement} playArea
  * @property {Array.<MemoryCard>} cards
  * @property {Boolean} isSolved
- * @property {Date} elapsedTime
+ * @property {{minutes:Number,seconds:Number,raw:Number}} elapsedTime
  */
 class MemoryGame {
 
