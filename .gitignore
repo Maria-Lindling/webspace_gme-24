@@ -9,6 +9,8 @@
 
 # nodejs
 **/node_modules
+package-lock.json
+package.json
 
 # Lecturer files
 /_AUSTAUSCH
