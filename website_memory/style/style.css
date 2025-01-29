@@ -9,6 +9,13 @@ body {
 #playArea {
   width: 720px ;
   line-height: 0 ;
+
+  &> button:nth-of-type(1) {
+    display: block ;
+    height: 1.5em ;
+    width: 9em ;
+    margin: 1em auto 0 auto ;
+  }
 }
 
 #output {

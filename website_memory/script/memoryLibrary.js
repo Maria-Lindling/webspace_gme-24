@@ -18,9 +18,7 @@ const memoryLibrary = {
   */
   main: function () {
     window.removeEventListener('load', memoryLibrary.main) ;
-    let playArea = document.getElementById("playArea") ;
-    let output   = document.getElementById("output") ;
-    memoryLibrary.gameSetup( playArea, output ) ;
+    memoryLibrary.createNewGameButton() ;
   },
   
   /**
@@ -124,7 +122,7 @@ const memoryLibrary = {
   handleSolvedPair: function ( event ) {
     /* console.log( event ) ; */
     event.listElement.setAttribute("style","background-color: red") ;
-    if ( window.game.isSolved ) {
+    if ( true || window.game.isSolved ) {
       var newEvent = new Event(
         "memoryGameSolved",
         { bubbles: true, cancelable: false }
@@ -148,7 +146,9 @@ const memoryLibrary = {
       ( playTime.minutes > 0 ?
         `${playTime.minutes} minute${playTime.minutes != 1 ? "s" : ""} and ` :
         "" ) +
-      `${playTime.seconds} second${playTime.seconds != 1 ? "s" : ""}!`
+      `${playTime.seconds} second${playTime.seconds != 1 ? "s" : ""}!` +
+      `\nRevealing all ${Math.floor(window.game.cards.length/2)} pairs took ` +
+      `you ${window.game.attempts} attempts.`
     ) ;
     if( confirm("Do you want to play again?") ) {
       memoryLibrary.gameSetup(
@@ -157,13 +157,14 @@ const memoryLibrary = {
       ) ;
     } else {
       memoryLibrary.cleanup() ;
+      memoryLibrary.createNewGameButton() ;
     }
   },
 
   /**
-  * Lists the names of all the available memory card motifs in the aside.
-  * @param {HTMLElement} output 
-  */
+   * Lists the names of all the available memory card motifs in the aside.
+   * @param {HTMLElement} output 
+   */
   populateOutput: function ( output ) {
     output.appendChild( document.createElement("ul") ) ;
     for( let motiv of memoryLibrary.motive ) {
@@ -173,9 +174,9 @@ const memoryLibrary = {
   },
 
   /**
-  * Adds game-relevant event-listeners to the document and play area.
-  * @param {HTMLElement} playArea 
-  */
+   * Adds game-relevant event-listeners to the document and play area.
+   * @param {HTMLElement} playArea 
+   */
   populateEventListeners: function ( playArea ) {
     playArea.addEventListener('click', memoryLibrary.handleClick) ;
     document.addEventListener('memoryPairSolved', memoryLibrary.handleSolvedPair) ;
@@ -183,21 +184,21 @@ const memoryLibrary = {
   },
 
   /**
-  * Creates a new play area and game objects to play with.
-  * @see memoryLibrary.cleanup
-  * @param {HTMLElement} playArea 
-  * @param {HTMLElement} output 
-  */
+   * Creates a new play area and game objects to play with.
+   * @see memoryLibrary.cleanup
+   * @param {HTMLElement} playArea 
+   * @param {HTMLElement} output 
+   */
   gameSetup: function ( playArea, output ) {
     memoryLibrary.cleanup() ;
-    window.game = new MemoryGame(playArea) ;
+    window.game = new MemoryGame( playArea ) ;
     memoryLibrary.populateOutput( output ) ;
     memoryLibrary.populateEventListeners( playArea ) ;
   },
 
   /**
-  * Cleans up all HTML-Elements from the play area.
-  */
+   * Cleans up all HTML-Elements from the play area.
+   */
   cleanup: function () {
     Array.from(document.getElementById("playArea").childNodes)
       .forEach( (child) => {child.remove()} ) ;
@@ -206,5 +207,27 @@ const memoryLibrary = {
     document.getElementById("playArea").removeEventListener('click', memoryLibrary.handleClick) ;
     document.removeEventListener('memoryPairSolved', memoryLibrary.handleSolvedPair) ;
     document.removeEventListener('memoryGameSolved', memoryLibrary.handleGameSolved) ;
+  },
+
+  /**
+   * Creates a button that starts a new game.
+   */
+  createNewGameButton: function () {
+    let ngBtn = document.getElementById( "playArea"  )
+      .appendChild( document.createElement( "button" ) ) ;
+    ngBtn.innerText = "Start New Game" ;
+    ngBtn.addEventListener( "click", memoryLibrary.newGameViaButton ) ;
+  },
+
+  /**
+   * Starts a new game.
+   */
+  newGameViaButton: function ( event ) {
+    event.target.remove() ;
+    event.stopPropagation() ;
+    memoryLibrary.gameSetup(
+      document.getElementById("playArea"),
+      document.getElementById("output")
+    ) ;
   }
 }

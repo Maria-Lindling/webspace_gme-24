@@ -20,6 +20,7 @@ class Coordinate {
  * @property {HTMLElement} playArea
  * @property {Array.<MemoryCard>} cards
  * @property {Boolean} isSolved
+ * 
  * @property {{minutes:Number,seconds:Number,raw:Number}} elapsedTime
  */
 class MemoryGame {
@@ -56,6 +57,12 @@ class MemoryGame {
      */
     this._firstInteraction = null ;
 
+    /**
+     * The number of card-pairs revealed by the user.
+     * @type {Number}
+     */
+    this.attempts = 0 ;
+
     this.populate() ;
   }
 
@@ -69,7 +76,7 @@ class MemoryGame {
   get isSolved () {
     let solvedCards = 0 ;
     this.cards.forEach( (card) => {
-      if ( card.isSolved ) { solvedCards++ ; }
+      if ( card._isSolved ) { solvedCards++ ; }
     } ) ;
     return ( solvedCards == this.cards.length ) ;
   }
@@ -148,7 +155,7 @@ class MemoryGame {
   findCard( event ) {
      return this.cards.find( (card) => {
       return (
-        !card.isSolved &&
+        !card._isSolved &&
         card.containsPointer( new Coordinate( event.x, event.y ) )
       ) ;
     } ) ?? null ;
@@ -186,15 +193,17 @@ class MemoryGame {
         this._previousCard = card ;
       } else {
         // reveal the card and update the image
-        card.reveal() ;
+        this.attempts++ ;
         if ( this._previousCard.motiv == card.motiv ) {
           // set the cards' isSolved to true, but DON'T update the image
           // it will be set to imageEmpty with the NEXT validateBoard
-          this._previousCard.isSolved = true ;
-          card.isSolved = true ;
+          this._previousCard.solve() ;
+          card.solve() ;
+        } else {
+          card.reveal() ;
         }
         this._previousCard = null ;
-        return card.isSolved;
+        return card._isSolved;
       }
       return false;
     }
@@ -209,7 +218,6 @@ class MemoryGame {
  * @property {String} motiv
  * @property {String} image
  * @property {Boolean} isRevealed
- * @property {Boolean} isSolved
  */
 class MemoryCard {
 
@@ -257,9 +265,16 @@ class MemoryCard {
     this.motiv = motiv ;
     /**
      * Whether or not the card is solved.
+     * @private
      * @type {Boolean}
      */
-    this.isSolved = false ;
+    this._isSolved = false ;
+    /**
+     * Whether or not the card is hidden.
+     * @private
+     * @type {Boolean}
+     */
+    this._isHidden = false ;
     /**
      * The img-Element assigned to the card.
      * @type {HTMLImageElement}
@@ -305,8 +320,21 @@ class MemoryCard {
      * @see MemoryCard.unReveal
      */
     this.unSolve = function () {
-      this.isSolved    = false ;
+      this._isSolved    = false ;
       this.unReveal() ;
+    }
+
+    /**
+     * Marks the cards solved and removes them from the board after one second.
+     * @method
+     */
+    this.solve = function () {
+      this._isSolved = true ;
+      this.domElement.setAttribute("src", this.image) ;
+      window.setTimeout( () => {
+        this._isHidden = true ;
+        this.domElement.setAttribute("src", this.image) ;
+      }, 1000 ) ;
     }
   }
 
@@ -320,9 +348,9 @@ class MemoryCard {
    */
   get image () {
     return (
-      this.isSolved ?
+      this._isHidden ?
       MemoryCard.imageEmpty : ( 
-        this._isRevealed ?
+        this._isRevealed || this._isSolved ?
           this._image :
           MemoryCard.imageBackside
         )
@@ -333,7 +361,7 @@ class MemoryCard {
    * Returns true if the card is revealed, or if it is solved.
    * @type {Boolean}
    */
-  get isRevealed () { return this._isRevealed || this.isSolved ; }
+  get isRevealed () { return (this._isRevealed || this._isSolved) ; }
 
   /**
    * @ignore
