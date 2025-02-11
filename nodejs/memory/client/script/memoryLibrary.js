@@ -18,7 +18,7 @@ const memoryLibrary = {
   */
   main: function () {
     window.removeEventListener('load', memoryLibrary.main) ;
-    memoryLibrary.createNewGameButton() ;
+    memoryLibrary.createNewGameContols() ;
   },
   
   /**
@@ -122,7 +122,7 @@ const memoryLibrary = {
   handleSolvedPair: function ( event ) {
     /* console.log( event ) ; */
     event.listElement.setAttribute("style","background-color: red") ;
-    if ( true || window.game.isSolved ) {
+    if ( window.game.isSolved ) {
       var newEvent = new Event(
         "memoryGameSolved",
         { bubbles: true, cancelable: false }
@@ -150,27 +150,39 @@ const memoryLibrary = {
       `\nRevealing all ${Math.floor(window.game.cards.length/2)} pairs took ` +
       `you ${window.game.attempts} attempts.`
     ) ;
-    if( confirm("Do you want to play again?") ) {
-      memoryLibrary.gameSetup(
-        document.getElementById("playArea"),
-        document.getElementById("output")
-      ) ;
-    } else {
-      memoryLibrary.cleanup() ;
-      memoryLibrary.createNewGameButton() ;
-    }
+
+    var newEvent = new Event(
+      "uploadScore",
+      { bubbles: true, cancelable: false }
+    ) ;
+    newEvent.scoreData = `User scored ${
+      Math.floor(
+        Math.pow( window.game.cards.length, 3 ) /
+        window.game.attempts /
+        playTime.raw *
+        10000
+      )
+    } points!` ;
+    console.log("local >>> " + newEvent.scoreData ) ;
+    document.dispatchEvent( newEvent ) ;
+    memoryLibrary.cleanup() ;
+    memoryLibrary.createNewGameContols() ;
   },
 
   /**
    * Lists the names of all the available memory card motifs in the aside.
-   * @param {HTMLElement} output 
+   * @param {HTMLElement} output
+   * @param {Number} pairs
    */
-  populateOutput: function ( output ) {
-    output.appendChild( document.createElement("ul") ) ;
-    for( let motiv of memoryLibrary.motive ) {
-      output.firstElementChild.appendChild( document.createElement("li") ) ;
-      output.firstElementChild.lastElementChild.innerText = motiv ;
-    }
+  populateOutput: function ( output, pairs ) {
+    output.appendChild( document.createElement( "ul" ) ) ;
+    memoryLibrary.motive.slice(
+      (pairs > 0) ? Math.max(memoryLibrary.motive.length-pairs,0) : 0
+    ).forEach( motif => {
+      output.firstElementChild
+        .appendChild( document.createElement("li" ) )
+        .innerText = motif ;
+    } ) ;
   },
 
   /**
@@ -188,11 +200,17 @@ const memoryLibrary = {
    * @see memoryLibrary.cleanup
    * @param {HTMLElement} playArea 
    * @param {HTMLElement} output 
+   * @param {Number} pairs 
    */
-  gameSetup: function ( playArea, output ) {
+  gameSetup: function ( pairs = -1 ) {
     memoryLibrary.cleanup() ;
-    window.game = new MemoryGame( playArea ) ;
-    memoryLibrary.populateOutput( output ) ;
+    let body = document.getElementsByTagName("body")[0] ;
+    let playArea = body.appendChild( document.createElement( "main" ) ) ;
+    playArea.setAttribute("id","playArea") ; 
+    let output = body.appendChild( document.createElement( "aside" ) ) ;
+    output.setAttribute("id","output") ; 
+    window.game = new MemoryGame( playArea, pairs ) ;
+    memoryLibrary.populateOutput( output, pairs ) ;
     memoryLibrary.populateEventListeners( playArea ) ;
   },
 
@@ -200,11 +218,8 @@ const memoryLibrary = {
    * Cleans up all HTML-Elements from the play area.
    */
   cleanup: function () {
-    Array.from(document.getElementById("playArea").childNodes)
-      .forEach( (child) => {child.remove()} ) ;
-    Array.from(document.getElementById("output").childNodes)
-      .forEach( (child) => {child.remove()} ) ;
-    document.getElementById("playArea").removeEventListener('click', memoryLibrary.handleClick) ;
+    document.getElementById("playArea")?.remove() ;
+    document.getElementById("output")?.remove() ;
     document.removeEventListener('memoryPairSolved', memoryLibrary.handleSolvedPair) ;
     document.removeEventListener('memoryGameSolved', memoryLibrary.handleGameSolved) ;
   },
@@ -212,22 +227,33 @@ const memoryLibrary = {
   /**
    * Creates a button that starts a new game.
    */
-  createNewGameButton: function () {
-    let ngBtn = document.getElementById( "playArea"  )
-      .appendChild( document.createElement( "button" ) ) ;
-    ngBtn.innerText = "Start New Game" ;
-    ngBtn.addEventListener( "click", memoryLibrary.newGameViaButton ) ;
+  createNewGameContols: function () {
+    let ngForm = document.getElementsByTagName("body")[0]
+      .appendChild( document.createElement( "form" ) ) ;
+    ngForm.appendChild( document.createElement( "input" ) ) ;
+    ngForm.lastElementChild.setAttribute( "type","range" ) ;
+    ngForm.lastElementChild.setAttribute( "name","pairs" ) ;
+    ngForm.lastElementChild.setAttribute( "min","1" ) ;
+    ngForm.lastElementChild.setAttribute( "max","18" ) ;
+    ngForm.lastElementChild.value = 10 ;
+
+    ngForm.appendChild( document.createElement( "output" ) ) ;
+    ngForm.lastElementChild.setAttribute( "name","pairsOut" ) ;
+    ngForm.lastElementChild.setAttribute( "for","pairs" ) ;
+    ngForm.lastElementChild.value = 10 ;
+    ngForm.setAttribute( "oninput", "pairsOut.value=parseInt(pairs.value)" ) ;
+
+    ngForm.appendChild( document.createElement( "button" ) ) ;
+    ngForm.lastElementChild.innerText = "Start New Game" ;
+    ngForm.lastElementChild.addEventListener( "click", memoryLibrary.newGameViaButton ) ;
   },
 
   /**
    * Starts a new game.
    */
   newGameViaButton: function ( event ) {
-    event.target.remove() ;
     event.stopPropagation() ;
-    memoryLibrary.gameSetup(
-      document.getElementById("playArea"),
-      document.getElementById("output")
-    ) ;
+    memoryLibrary.gameSetup( parseInt( document.getElementsByName("pairs")[0].value ) ) ;
+    event.target.parentElement.remove() ;
   }
 }

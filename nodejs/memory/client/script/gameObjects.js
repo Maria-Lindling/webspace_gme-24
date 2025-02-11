@@ -29,7 +29,7 @@ class MemoryGame {
    * @constructor
    * @param {HTMLElement} playArea 
    */
-  constructor(playArea) {
+  constructor( playArea, pairs ) {
     /**
      * The HTML-Element designated as the play area.
      * @type {HTMLElement}
@@ -63,7 +63,7 @@ class MemoryGame {
      */
     this.attempts = 0 ;
 
-    this.populate() ;
+    this.populate( pairs ) ;
   }
 
   /**
@@ -92,11 +92,12 @@ class MemoryGame {
       "seconds":0,
       "raw":0
     } ;}
-    let seconds = Math.floor((Date.now() - this._firstInteraction) / 1000) ;
+    let rawms   = Date.now() - this._firstInteraction ;
+    let seconds = Math.floor(rawms / 1000) ;
     return {
       "minutes":Math.floor(seconds/60),
       "seconds":seconds%60,
-      "raw":seconds
+      "raw":rawms
     } ;
   }
 
@@ -105,13 +106,12 @@ class MemoryGame {
    * then fills the play area (assigned at construction) with img-Elements
    * matching the MemoryCard elements created from the motifs.
    * @see MemoryCard
+   * @param {Number} pairs 
    */
-  populate () {
-    /**
-     * @const
-     * @type {Array.<String>}
-     */
-    const temp = memoryLibrary.motive.map(
+  populate ( pairs ) {
+    const temp = memoryLibrary.motive.slice(
+      (pairs > 0) ? Math.max(memoryLibrary.motive.length-pairs,0) : 0
+    ).map(
       ( item ) => { return new MemoryCard(item) ; }
     ) ;
     this.cards = memoryLibrary.shuffle(
@@ -228,7 +228,7 @@ class MemoryCard {
    * @readonly
    * @type {String}
    */
-  static imageBackside = "./bilder/rueckseite.jpg" ;
+  static imageBackside = `./client/bilder/rueckseite.jpg` ;
   /**
    * The path of the image to use when a MemoryCard is solved (invisible).
    * @see MemoryCard.image
@@ -236,7 +236,7 @@ class MemoryCard {
    * @readonly
    * @type {String}
    */
-  static imageEmpty    = "./bilder/leer.gif" ;
+  static imageEmpty    = "./client/bilder/leer.gif" ;
 
   /**
    * @constructor
@@ -256,7 +256,14 @@ class MemoryCard {
      * @private
      * @type {String}
      */
-    this._image = `./bilder/${motiv}.jpg` ;
+    this._image = `./client/bilder/${motiv}.jpg` ;
+
+    /**
+     * The value of the previous _image.
+     * @private
+     * @type {String}
+     */
+    this._previousImage = "" ;
 
     /**
      * The motif assigned to the card.
@@ -335,6 +342,18 @@ class MemoryCard {
         this._isHidden = true ;
         this.domElement.setAttribute("src", this.image) ;
       }, 1000 ) ;
+    }
+
+    this.changeFace = function () {
+      if( this._previousImage != this.image ) {
+        this.domElement.setAttribute("src", this.image) ;
+        let event = new Event(
+          "c", 
+          { bubbles: true, cancelable: false }
+        ) ;
+        event.target = this.domElement ;
+        this.domElement.dispatchEvent(  ) ;
+      }
     }
   }
 

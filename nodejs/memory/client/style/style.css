@@ -1,0 +1,46 @@
+body {
+  display: flex ;
+  justify-content: center ;
+
+  width: 960px ;
+  margin: auto ;
+
+  &>form {
+    display: flex ;
+    justify-content: center ;
+    flex-wrap: wrap ;
+    padding: 0.8375em ;
+    width: 12em ;
+
+    background-color: #5fdfb4 ;
+
+    &> input {
+      display: block ;
+      box-sizing: border-box ;
+      width: 9em ;
+    }
+    
+    &> output {
+      display: block ;
+      box-sizing: border-box ;
+      width: 3em ;
+      text-align: center;
+    }
+
+    &> button:nth-of-type(1) {
+      display: block ;
+      height: 1.5em ;
+      width: 9em ;
+      margin: 1em auto 0 auto ;
+    }
+  }
+}
+
+#playArea {
+  width: 720px ;
+  line-height: 0 ;
+}
+
+#output {
+  width: auto ;
+}
