@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width;"/>
+		<meta charset="utf-8"/>
+		<title>Jump&amp;Run</title>
+		<style>
+		
+		</style>
+		<script>
+			// Globale Konstanten und Variablen
+			// Die Map als Array aus Strings, deren einzelne Zeichen die Tiles repräsentieren
+			var map = [
+			'DDDZZDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', // 00
+			'M                                                M', // 01
+			'M                                                M', // 02
+			'M    PPPPPPP             PPPPP         T         M', // 03
+			'M                                     PPPP       M', // 04
+			'M              PPPPPPP                           M', // 05
+			'M                        PPPPPPP                 M', // 06
+			'M         T                    T      PPPPP      M', // 07
+			'M       PPPPP                  PPPPP           T M', // 08
+			'A                   PPPPPPP                  PPPPM', // 09
+			'A                                                M', // 10
+			'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE', // 11
+		//	'01234567890123456789012345678901234567890123456789'
+			] ;
+		</script>
+	</head>
+	<body>
+		<div id="Bildquellen">
+			<!--Unsichtbarer Bereich mit den Bildinformationen für JS-->
+			<img src="hintergrund.png" alt="Hintergrund" id="Hintergrund" />
+			<img src="tileset.png" alt="Tileset" id="Tileset" />
+			<img src="laufbursche.png" alt="Spritesheet" id="Spritesheet" />
+		</div>
+		<div id="Spielfeld">
+			<!-- Hier wird das entsprechende Canvas über JS eingefügt -->
+		</div>
+		<div id="Anzeige">
+			<!-- Hier werden HUD-Informationen für das Spiel eingefügt -->
+		</div>
+	</body>
+</html>
