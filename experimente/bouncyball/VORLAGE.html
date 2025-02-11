@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<!-- head-Inhalte sind nur für den Browser und die Suchmaschinen gedacht
+			 und NICHT für den Anwender - Ausnahme: title für Tabs und Lesezeichen -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Boing Boing Bouncy Ball</title>
+		<link rel="icon" href="pfad/zu/bild.png" type="image/png" />	
+		<link rel="stylesheet" href="pfad/zu/datei.css" />
+		<style>
+			/* Bereich für ergänzende, Seiten-spezifische CSS-Einstellungen */
+#spielfeld {
+  position: relative ;
+  width: 800px ;
+  height: 500px ;
+  border: solid 2px #f00 ;
+  background: #060 ;
+  margin: 0 auto ;
+}
+
+.ball {
+  position: absolute ;
+  width: 20px ;
+  height: 20px ;
+  border-radius: 10px ;
+  background-color: #ffcc99 ;
+}
+		</style>
+		<script src="./script/Rectangle.js"></script>
+		<script src="./script/Ball.js"></script>
+		<script>
+/* Bereich für Seiten-spezifische JavaScript-Definitionen */
+
+function start( event ) {
+  let spielfeld = document.getElementById('spielfeld') ;
+
+  for( let i = 2 + Math.ceil(Math.random() * 8); i > 0; i-- ) {
+    new Ball( spielfeld ) ;
+  }
+
+  spielfeld.addEventListener( 'click', Ball.throw ) ;
+  window.mainLoop = window.setInterval( update, Ball.frameRate ) ;
+}
+
+function update() { Ball.updateAll() ; }
+
+window.addEventListener( 'DOMContentLoaded', start ) ;
+		</script>
+	</head>
+	<body>
+		<!-- body-Inhalte werden dem Anwender im Viewport angezeigt -->
+    <h1>Objektorientierte Programmierung in JavaScript</h1>
+    <main id="spielfeld"></main>
+    <aside id="anzeige"></aside>
+	</body>
+</html>

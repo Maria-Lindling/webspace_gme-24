@@ -1,5 +1,5 @@
-const LOCALHOST = "127.0.0.1" ;
-const LOCALPORT = 80 ; // 4141
+const LOCALHOST = "192.168.189.59" ; // 192.168.189.59
+const LOCALPORT = 4141 ; // 80
 
 /*************************/
 /****** BASIC SETUP ******/
@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket){
   socket.on('disconnect',function(){delete SOCKET_LIST[socket.id];});
 });
 
-server.listen(LOCALPORT);
+server.listen(LOCALPORT,LOCALHOST);
 
 
 console.log(`Server listening on: http://${LOCALHOST}:${LOCALPORT}`);
