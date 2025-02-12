@@ -15,7 +15,7 @@ export default class Tile {
     this.domElement   = tilesheet ;
     this.tileData     = tileData ;
     this.placement    = placement || new Rectangle(0,0,0,0) ;
-    this.hasCollision = options?.collision || true ;
+    this.hasCollision = options?.collision ;
   }
 
   draw( ctx ) {

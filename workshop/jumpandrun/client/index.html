@@ -36,18 +36,35 @@ body {
 window.addEventListener('load',startGame) ;
 /* nodejs socket hookup */
 window.socket = io();
+
+// OUTGOING
+
 // upload score
 document.addEventListener( "uploadScore", async (event) => {
-  window.socket.emit('uploadScore', event.scoreData) ;
+  window.socket.emit('uploadScore', event) ;
 } ) ;
+
 // log to server
 document.addEventListener( "logToServer", async (event) => {
-  window.socket.emit('logToServer', event.msgData) ;
+  window.socket.emit('logToServer', event) ;
 } ) ;
+
+// request a map from the server
+document.addEventListener('changeMap', async (event) => {
+  window.socket.emit('changeMap', event) ;
+});
+
+// INCOMING
+
 // confirm that score was uploaded
-window.socket.on('writeToConsole',function(data) {
+window.socket.on('writeToConsole', (data) => {
   let timestamp = new Date() ;
-  console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] <<< "${data}"`);
+  console.log( `[${('0'+timestamp.getHours()).slice(-2)}:${('0'+timestamp.getMinutes()).slice(-2)}:${('0'+timestamp.getSeconds()).slice(-2)}] <<< "${data}"`);
+});
+
+// receive and set a map from the server
+window.socket.on('newMap', (data) => {
+  window.game.loadNewMap(data) ;
 });
     </script>
   </head>

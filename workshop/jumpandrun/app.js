@@ -37,11 +37,42 @@ io.sockets.on('connection', (socket) => {
   let timeOfConnection = new Date() ;
   console.log( `[${timeOfConnection.getHours()}:${timeOfConnection.getMinutes()}:${timeOfConnection.getSeconds()}] New user connected.`);
 
-  socket.on('uploadScore',(data) => {
-    let timestamp = new Date() ;
-    console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] <<< "${data}"`);
+  socket.on('changeMap', (event) => {
+      let timestamp = new Date() ;
+      console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] User requested new map.`);
+      socket.emit( 'newMap', {
+        map: [
+        'DDDDZZDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', // 00
+        'M                                                M', // 01
+        'M                                                M', // 02
+        'M    PPPPPPP             PPPPP         T         M', // 03
+        'M                                     PPPP       M', // 04
+        'M              PPPPPPP                           M', // 05
+        'M                        PPPPPPP                 M', // 06
+        'M         T                    T      PPPPP      M', // 07
+        'M       PPPPP                  PPPPP           T M', // 08
+        'A                   PPPPPPP                  PPPPM', // 09
+        'AGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGM', // 10
+        'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', // 11
+      //'01234567890123456789012345678901234567890123456789'
+      // 0         1         2         3         4
+      ],
+      tileset: "tileset",
+      tileSize: 40,
+      tiles: 'ADMPSEBGTZ',
+      blocker: 'BDEMPS',
+      background: "background"
+    } )
+    timestamp = new Date() ;
+    console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] New map dispatched.`);
+  }
+  ) ;
 
-    fs.appendFile(SCORESHEET, `${data}\n`, err => {
+  socket.on('uploadScore',(event) => {
+    let timestamp = new Date() ;
+    console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] <<< "${event.requestData}"`);
+
+    fs.appendFile(SCORESHEET, `${event.requestData}\n`, err => {
       if (err) {
         console.error(err);
       } else {
@@ -53,9 +84,9 @@ io.sockets.on('connection', (socket) => {
     });
   });
 
-  socket.on('logToServer',(data) => {
+  socket.on('logToServer',(event) => {
     let timestamp = new Date() ;
-    console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] <<< "${data}"`);
+    console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] <<< "${event.requestData}"`);
   });
 
   socket.on('disconnect',() => {
