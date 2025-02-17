@@ -41,6 +41,7 @@ window.game = {
     let deltaTime = new Date() - game._previousFrame ;
 
     if( game._running ) {
+
       game._currentLevel.update( deltaTime ) ;
 
       window.requestAnimationFrame( game.update ) ;
@@ -49,7 +50,7 @@ window.game = {
   },
 
   start: () => {
-    game.update() ;
+    game._currentLevel.drawMap() ;
     // begins the game-loop with regular updates of all game-objects
     window.requestAnimationFrame( game.update ) ;
   },
@@ -83,7 +84,9 @@ window.game = {
       game._assetManager.imageLibrary[data.tileset],
       data.tileSize,
       data.tiles,
-      data.blocker
+      data.blocker,
+      data.nonstatic,
+      data.collectible
     ) ;
     game._currentLevel.setBackground( game._assetManager.imageLibrary[data.background] ) ;
     game.dispatchRequest( 'logToServer', `Created a canvas of size ${game._currentLevel.width}x${game._currentLevel.height} (pixels).` ) ;
@@ -91,8 +94,8 @@ window.game = {
     game._currentLevel.setPlayerCharacter(
       new Actor( {
         pos: new Coordinate(400,360),
-        speed: 400,
-        jumpForce: 640,
+        speed: 240,
+        jumpForce: 960,
         spritesheet: {
           element: game._assetManager.imageLibrary['spritesheet'],
           width: 62,
@@ -105,7 +108,8 @@ window.game = {
     window.addEventListener( 'keyup',   game._inputControl ) ;
 
     game._running = true ;
-    window.requestAnimationFrame( game.update ) ;
+    console.log( game._currentLevel ) ;
+    window.setTimeout( game.start, 200 ) ;
   },
   
   /*************************/

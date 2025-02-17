@@ -115,16 +115,21 @@ export default class Rectangle {
       overlap.left && overlap.right &&
       overlap.top && overlap.bottom
     ) {
-      return this ;
+      return new Rectangle(
+        Math.floor(this.left),
+        Math.floor(this.top),
+        Math.floor(this.width),
+        Math.floor(this.bottom)
+      ) ;
     } else if(
       overlap.left && overlap.right &&
       (overlap.top || overlap.bottom)
     ) {
       return new Rectangle(
-        this.left,
-        this.top,
-        this.width,
-        ((overlap.top) ?
+        Math.floor(this.left),
+        Math.floor(this.top),
+        Math.floor(this.width),
+        Math.floor((overlap.top) ?
           rectangle.bottom - this.top :
           rectangle.top - this.bottom
         )
@@ -134,19 +139,19 @@ export default class Rectangle {
       (overlap.top || overlap.bottom)
     ) {
       return new Rectangle(
-        ((overlap.left) ?
+        Math.floor((overlap.left) ?
           this.left :
           rectangle.left
         ),
-        ((overlap.top) ?
+        Math.floor((overlap.top) ?
           this.top :
           rectangle.top
         ),
-        ((overlap.left) ?
+        Math.floor((overlap.left) ?
           rectangle.right - this.left :
           this.right - rectangle.left 
         ),
-        ((overlap.top) ?
+        Math.floor((overlap.top) ?
           rectangle.bottom - this.top :
           this.bottom - rectangle.top
         )

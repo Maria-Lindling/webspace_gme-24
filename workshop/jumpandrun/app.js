@@ -61,7 +61,9 @@ io.sockets.on('connection', (socket) => {
       tileSize: 40,
       tiles: 'ADMPSEBGTZ',
       blocker: 'BDEMPS',
-      background: "background"
+      background: "background",
+      nonstatic: 'T',
+      collectible: 'T'
     } )
     timestamp = new Date() ;
     console.log( `[${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}] New map dispatched.`);
